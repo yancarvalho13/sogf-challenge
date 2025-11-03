@@ -4,6 +4,8 @@
 **De:** Comando da Frota Estelar, Divisão de Arquitetura de Software
 **Assunto:** Desenvolvimento do Sistema Oficial de Gerenciamento da Frota (SOGF)
 
+![jabba](./assets/jabba.png)
+
 ### 1. Visão Geral da Missão (O Desafio)
 
 Bem-vindo à Frota Estelar, Cadete.
