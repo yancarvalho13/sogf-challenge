@@ -1,0 +1,9 @@
+namespace Solution.Domain.Model;
+
+public class Missao : BaseModel
+{
+    public string Descricao { get; private set; }
+    public StatusMissao Status { get; private set; }
+    public Nave NaveDesignada { get; private set; }
+    
+}

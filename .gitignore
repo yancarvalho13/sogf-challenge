@@ -1,0 +1,91 @@
+## --- IDEs ---
+# Visual Studio
+.vs/
+
+# JetBrains Rider / IntelliJ
+.idea/
+*.sln.iml
+*.DotSettings.user
+
+# VS Code (guarde só o que for útil)
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+## --- .NET / C# build ---
+bin/
+obj/
+out/
+[Bb]uild/
+artifacts/
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Publicação
+publish/
+*.pubxml
+*.publish.xml
+
+# Arquivos de lock/gerados pelo NuGet (não editar)
+project.lock.json
+project.fragment.lock.json
+project.assets.json
+*.nuget.props
+*.nuget.targets
+# Pasta de pacotes locais (se usada)
+packages/
+# Pacotes gerados
+*.nupkg
+*.snupkg
+
+## --- Logs / temporários ---
+*.log
+Logs/
+*.tmp
+*.temp
+*.cache
+.cache/
+
+## --- Configs locais / segredos ---
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+appsettings.*.local.json
+appsettings.Local.json
+secrets.json
+*.pfx
+*.p12
+
+## --- Bancos locais / data ---
+*.db
+*.sqlite
+*.sqlite3
+*.mdb
+
+## --- Ferramentas / front junto do backend (se tiver) ---
+node_modules/
+dist/
+build/
+
+## --- Docker / envs (se usar var. de ambiente no repo) ---
+.env
+.env.*
+docker-compose.override.yml
+
+## --- SO / lixeira ---
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+# Windows
+Thumbs.db
+Desktop.ini
+# Linux
+*~
+
+
