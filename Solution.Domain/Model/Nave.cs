@@ -10,5 +10,30 @@ public sealed class Nave : BaseModel
 
     public ICollection<Missao>? Missoes { get; private set; } = new List<Missao>();
 
+    public Nave() {}
 
+    public Nave(string nome, TipoNave classe, Tripulante? piloto, StatusOperacional status)
+    {
+        Nome = nome;
+        Classe = classe;
+        Piloto = piloto;
+        Status = status;
+    }
+
+    public void AlistarPiloto(Tripulante piloto)
+    {
+        Piloto = piloto;
+    }
+
+    public Nave(string nome, TipoNave classe, StatusOperacional status)
+    {
+        Nome = nome;
+        Classe = classe;
+        Status = status;
+    }
+
+    public long PilotId()
+    {
+        return PilotId();
+    }
 }

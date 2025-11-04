@@ -8,5 +8,7 @@ public sealed class RelatorioCombate : BaseModel
     
     public long PilotoVencedorId { get; private set;}
     public Tripulante PilotoVencedor { get; private set; }
+    
     public long PilotoPerdedorId { get; private set; }
+    public Tripulante PilotoPerdedor { get; private set; }
 }

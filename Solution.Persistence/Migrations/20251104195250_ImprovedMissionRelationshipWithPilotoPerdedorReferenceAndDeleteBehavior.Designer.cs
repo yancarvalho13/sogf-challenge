@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Solution.Persistence.Contexts;
 
@@ -11,9 +12,11 @@ using Solution.Persistence.Contexts;
 namespace Solution.Persistence.Migrations
 {
     [DbContext(typeof(SogfDbContext))]
-    partial class SogfDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251104195250_ImprovedMissionRelationshipWithPilotoPerdedorReferenceAndDeleteBehavior")]
+    partial class ImprovedMissionRelationshipWithPilotoPerdedorReferenceAndDeleteBehavior
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

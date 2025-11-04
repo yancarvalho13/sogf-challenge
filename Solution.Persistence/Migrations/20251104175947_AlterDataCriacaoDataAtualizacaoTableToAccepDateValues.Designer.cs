@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Solution.Persistence.Contexts;
 
@@ -11,9 +12,11 @@ using Solution.Persistence.Contexts;
 namespace Solution.Persistence.Migrations
 {
     [DbContext(typeof(SogfDbContext))]
-    partial class SogfDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251104175947_AlterDataCriacaoDataAtualizacaoTableToAccepDateValues")]
+    partial class AlterDataCriacaoDataAtualizacaoTableToAccepDateValues
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -127,8 +130,6 @@ namespace Solution.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PilotoPerdedorId");
-
                     b.HasIndex("PilotoVencedorId");
 
                     b.ToTable("relatorioCombate", (string)null);
@@ -191,19 +192,11 @@ namespace Solution.Persistence.Migrations
 
             modelBuilder.Entity("Solution.Domain.Model.RelatorioCombate", b =>
                 {
-                    b.HasOne("Solution.Domain.Model.Tripulante", "PilotoPerdedor")
-                        .WithMany("HistoricoDeDerrotas")
-                        .HasForeignKey("PilotoPerdedorId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
                     b.HasOne("Solution.Domain.Model.Tripulante", "PilotoVencedor")
                         .WithMany("HistoricoDeCombates")
                         .HasForeignKey("PilotoVencedorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("PilotoPerdedor");
 
                     b.Navigation("PilotoVencedor");
                 });
@@ -235,8 +228,6 @@ namespace Solution.Persistence.Migrations
             modelBuilder.Entity("Solution.Domain.Model.Tripulante", b =>
                 {
                     b.Navigation("HistoricoDeCombates");
-
-                    b.Navigation("HistoricoDeDerrotas");
                 });
 #pragma warning restore 612, 618
         }

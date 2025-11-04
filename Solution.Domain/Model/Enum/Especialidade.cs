@@ -2,8 +2,8 @@ namespace Solution.Domain.Model;
 
 public enum Especialidade
 {
-    Batalha,
-    Engenharia,
-    Medicina,
-    Estrategista
+    Batalha = 1,
+    Engenharia = 2 ,
+    Medicina = 3,
+    Estrategista = 4
 }

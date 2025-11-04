@@ -15,10 +15,12 @@ public class NaveConfiguration : IEntityTypeConfiguration<Nave>
             .ValueGeneratedOnAdd();
 
         builder.Property(nv => nv.DataCriacao)
-            .ValueGeneratedOnAdd();
+            .ValueGeneratedOnAdd()
+            .HasDefaultValueSql("getDate()");
 
         builder.Property(nv => nv.DataAtualizacao)
-            .ValueGeneratedOnAddOrUpdate();
+            .ValueGeneratedOnAddOrUpdate()
+            .HasDefaultValueSql("getDate()");
 
         builder.Property(nv => nv.Nome)
             .IsRequired().HasMaxLength(256);

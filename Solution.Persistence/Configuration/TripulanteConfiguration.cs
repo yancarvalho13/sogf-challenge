@@ -33,7 +33,15 @@ public class TripulanteConfiguration : IEntityTypeConfiguration<Tripulante>
         builder.HasMany(t => t.HistoricoDeCombates)
             .WithOne(rc => rc.PilotoVencedor)
             .HasForeignKey(rc => rc.PilotoVencedorId)
-            .IsRequired();
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasMany(t => t.HistoricoDeDerrotas)
+            .WithOne(rc => rc.PilotoPerdedor)
+            .HasForeignKey(rc => rc.PilotoPerdedorId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.NoAction);
+
 
     }
 }

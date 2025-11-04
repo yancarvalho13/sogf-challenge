@@ -2,7 +2,7 @@ namespace Solution.Domain.Model;
 
 public enum TipoNave
 {
-    CruzadorDeBatalha,
-    Utilitario,
-    Patrulha,
+    CruzadorDeBatalha = 1,
+    Utilitario = 2,
+    Patrulha = 3,
 }
