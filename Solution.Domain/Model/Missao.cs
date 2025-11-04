@@ -1,6 +1,6 @@
 namespace Solution.Domain.Model;
 
-public class Missao : BaseModel
+public sealed class Missao : BaseModel
 {
     public string Descricao { get; private set; }
     public StatusMissao Status { get; private set; }

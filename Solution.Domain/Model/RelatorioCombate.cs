@@ -1,6 +1,6 @@
 namespace Solution.Domain.Model;
 
-public class RelatorioCombate : BaseModel
+public sealed class RelatorioCombate : BaseModel
 {
     public DateTime Data { get; private set; }
     public ResultadoCombate Resultado { get; private set; }

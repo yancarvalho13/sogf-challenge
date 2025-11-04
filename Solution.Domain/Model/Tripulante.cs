@@ -1,6 +1,6 @@
 namespace Solution.Domain.Model;
 
-public class Tripulante : BaseModel
+public sealed class Tripulante : BaseModel
 {
     public string Nome { get; private set; }
     public Patente Patente { get; private set; }
