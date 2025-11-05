@@ -20,10 +20,7 @@ public sealed class Nave : BaseModel
         Status = status;
     }
 
-    public void EnlistPilot(Tripulante piloto)
-    {
-        Piloto = piloto;
-    }
+  
 
     public void EnlistTripulante(Tripulante tripulante)
     {

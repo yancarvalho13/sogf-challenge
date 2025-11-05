@@ -1,5 +1,11 @@
 
 
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Solution.Api;
+using Solution.Api.Contracts;
+using Solution.Api.Controllers;
+using Solution.Api.Controllers.Nave;
+using Solution.Api.Controllers.Tripulante;
 using Solution.Application;
 using Solution.Persistence;
 
@@ -11,6 +17,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddControllers();
 builder.Services.AddApplication();
+builder.Services.AddWebServices();
 
 //builder.Services.AddEndpointsApiExplorer();
 

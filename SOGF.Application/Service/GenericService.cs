@@ -44,7 +44,7 @@ where TEntity : BaseModel
          return _mapper.ToDto(entitie);
     }
 
-    public async Task<TResponse> UpdateAsync(TRequest request)
+    public async Task<TResponse> UpdateAsync(TRequest request, long id)
     {
         var entitie = _mapper.ToEntity(request);
         await _genericRepository.UpdateAsync(entitie);

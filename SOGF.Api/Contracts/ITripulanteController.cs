@@ -4,6 +4,6 @@ using Solution.Application.Dto;
 
 namespace Solution.Api.Contracts;
 
-public interface INaveController : IGenericController<Nave, CreateNaveRequest, NaveResponse>
+public interface ITripulanteController : IGenericController<Tripulante, TripulanteRequest, TripulanteResponse>
 {
 }

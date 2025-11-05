@@ -17,16 +17,7 @@ public class NaveService : GenericService<SOGF.Domain.Model.Nave, CreateNaveRequ
         _tripulanteRepository = tripulanteRepository;
         _naveMapper = naveMapper;
     }
-
-    public async Task<EnlistPilotResponse> EnlistPilot(long pilotId, long naveId)
-    {
-        var tripulanteEntitie = await _tripulanteRepository.GetByIdAsync(pilotId);
-        var naveEntitie = await _naveRepository.GetByIdAsync(naveId);
-
-        if (tripulanteEntitie is null || naveEntitie is null) throw new NullReferenceException();
-
-        return _naveMapper.ToEnlistPilotDto(naveEntitie, tripulanteEntitie);
-    }
+    
    
 
     public async Task<EnlistTripulanteResponse> EnlistTripulante(long tripulanteId, long naveId)

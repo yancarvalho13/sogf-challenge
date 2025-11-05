@@ -27,15 +27,6 @@ public class NaveConfiguration : IEntityTypeConfiguration<Nave>
 
         builder.Property(nv => nv.Classe)
             .HasConversion<string>().IsRequired();
-
-        builder.HasOne(nv => nv.Piloto)
-            .WithOne(pilot => pilot.NavePilotada)
-            .HasForeignKey<Tripulante>(e => e.NavePilotadaId);
-
-        builder.HasMany(nv => nv.Tripulantes)
-            .WithOne(tp => tp.NaveAtual)
-            .HasForeignKey(tp => tp.NaveAtualId)
-            .IsRequired(false);
         
         builder.Property(nv => nv.Status)
             .HasConversion<string>().IsRequired();

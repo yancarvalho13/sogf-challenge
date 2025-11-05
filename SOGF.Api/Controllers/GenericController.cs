@@ -1,35 +1,84 @@
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using SOGF.Domain.Model;
 using Solution.Api.Contracts;
+using Solution.Application.Contracts.Service;
 
 namespace Solution.Api.Controllers;
 
-public class GenericController<T> : IGenericController<T> where T : BaseModel
+[ApiController]
+public class GenericController<TEntity, TRequest, TResponse>(
+    IGenericService<TEntity, TRequest, TResponse> genericService)
+    : ControllerBase,
+        IGenericController<TEntity, TRequest, TResponse>
+
 {
-    
-    
-    public async Task<IActionResult> Create(T request)
+    [HttpPost("[controller]")]
+    public async Task<IActionResult> Create(TRequest request)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var response = await genericService.CreateAsync(request);
+            return Ok(response);
+        }
+        catch (Exception e)
+        {
+            return BadRequest();
+        }
     }
 
+    [HttpGet("[controller]")]
     public async Task<IActionResult> GetAll()
     {
-        throw new NotImplementedException();
+        try
+        {
+            var response = await genericService.GetAllAsync();
+            return Ok(response);
+        }
+        catch (Exception e)
+        {
+            return BadRequest();
+        }
     }
 
+    [HttpGet("[controller]/{id}")]    
     public async Task<IActionResult> GetById(long id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var response = await genericService.GetByIdAsync(id);
+            return Ok(response);
+        }
+        catch (Exception e)
+        {
+            return BadRequest();
+        }
     }
 
-    public async Task<IActionResult> Update(T request, long id)
+    [HttpDelete("[controller]/{id}")]
+    public async Task<IActionResult> Update(TRequest request, long id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var response = await genericService.UpdateAsync(request, id);
+            return Ok(response);
+        }
+        catch (Exception e)
+        {
+            return BadRequest();
+        }
     }
 
+    [HttpDelete("[controller]/{id}")]
     public async Task<IActionResult> DeleteById(long id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var response = await genericService.DeleteAsync(id);
+            return response ? Ok() : BadRequest();
+        }
+        catch (Exception e)
+        {
+            return BadRequest();
+        }
     }
 }
