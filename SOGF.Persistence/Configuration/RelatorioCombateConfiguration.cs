@@ -21,9 +21,25 @@ public class RelatorioCombateConfiguration : IEntityTypeConfiguration<RelatorioC
         
         builder.Property(rc => rc.Data)
             .HasColumnType("date");
+        
         builder.Property(rc => rc.Resultado)
             .HasConversion<string>()
             .IsRequired();
-        
+
+        builder.HasOne(rc => rc.PilotoVencedor)
+            .WithMany(p => p.Vitorias)
+            .HasForeignKey(rc => rc.PilotoPerdedorId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne(rc => rc.PilotoPerdedor)
+            .WithMany(p => p.Derrotas)
+            .HasForeignKey(rc => rc.PilotoPerdedorId)
+            .OnDelete(DeleteBehavior.Restrict);
+            
+        builder.ToTable(t => 
+            t.HasCheckConstraint("CK_PilotoVencedorId_PilotoPerdedorId",
+                "[PilotoVencedorId] <> [PilotoPerdedorId]"));
+
+        builder.HasIndex(rc => new { rc.PilotoVencedorId, rc.PilotoPerdedorId });
     }
 }

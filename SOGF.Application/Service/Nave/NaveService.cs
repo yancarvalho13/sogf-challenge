@@ -1,66 +1,33 @@
 using Solution.Application.Contracts.Persistence;
+using Solution.Application.Contracts.Service;
 using Solution.Application.Dto;
+using Solution.Application.Mappers;
 
 namespace Solution.Application.Service.Nave;
 
-public class NaveService : INaveService
+public class NaveService : GenericService<SOGF.Domain.Model.Nave, CreateNaveRequest, NaveResponse>, INaveService
 {
     private readonly INaveRepository _naveRepository;
     private readonly ITripulanteRepository _tripulanteRepository;
-
-    public NaveService(INaveRepository naveRepository, ITripulanteRepository tripulanteRepository)
+    private readonly INaveMapper _naveMapper;
+    public NaveService(INaveRepository naveRepository, NaveMapper mapper, ITripulanteRepository tripulanteRepository, INaveMapper naveMapper) 
+        : base(naveRepository, mapper)
     {
         _naveRepository = naveRepository;
         _tripulanteRepository = tripulanteRepository;
-    }
-
-  
-
-    public async Task<NaveResponse> GetByIdAsync(long id)
-    {
-        var entity = await _naveRepository.GetByIdAsync(id);
-        if (entity is null) throw new NullReferenceException();
-        return new NaveResponse(entity.Nome, entity.Classe, entity.Status);
-
-    }
-
-    public async Task<NaveResponse> CreateAsync(CreateNaveRequest request)
-    {
-        var entity = new SOGF.Domain.Model.Nave(request.nome, request.classe, request.status);
-        await _naveRepository.CreateAsync(entity);
-        return new NaveResponse(entity.Nome, entity.Classe, entity.Status);
-    }
-
-    public async Task<GetAllNavesResponse> GetAllAsync()
-    {
-        var naves = await _naveRepository.GetAllAsync();
-        var dto = naves.Select(nv => new NaveResponse(nv.Nome, nv.Classe, nv.Status))
-            .ToList();
-        
-        return new GetAllNavesResponse(dto);
-    }
-
-    public async Task<bool> DeleteByIdAsync(long id)
-    {
-        var entity = await _naveRepository.GetByIdAsync(id);
-
-        if (entity is null) throw new NullReferenceException();
-        await _naveRepository.DeleteAsync(entity);
-        return true;
+        _naveMapper = naveMapper;
     }
 
     public async Task<EnlistPilotResponse> EnlistPilot(long pilotId, long naveId)
     {
-        var tripulanteDb = await _tripulanteRepository.GetByIdAsync(pilotId);
-        var naveDb = await _naveRepository.GetByIdAsync(naveId);
+        var tripulanteEntitie = await _tripulanteRepository.GetByIdAsync(pilotId);
+        var naveEntitie = await _naveRepository.GetByIdAsync(naveId);
 
-        if (tripulanteDb is null || naveDb is null) throw new NullReferenceException();
-        
-        naveDb.EnlistPilot(tripulanteDb);
-        await _naveRepository.CreateAsync(naveDb);
+        if (tripulanteEntitie is null || naveEntitie is null) throw new NullReferenceException();
 
-        return new EnlistPilotResponse(naveDb.Id, tripulanteDb.Id, naveDb.Nome, tripulanteDb.Nome);
+        return _naveMapper.ToEnlistPilotDto(naveEntitie, tripulanteEntitie);
     }
+   
 
     public async Task<EnlistTripulanteResponse> EnlistTripulante(long tripulanteId, long naveId)
     {
@@ -71,11 +38,9 @@ public class NaveService : INaveService
         
         naveDb.EnlistTripulante(tripulanteDb);
 
-        await _naveRepository.CreateAsync(naveDb);
-        var tripulanteDtoList =
-            naveDb.Tripulantes.Select(t =>
-                new TripulanteResponse(t.Id, t.Nome, t.Patente, t.Especialidade)).ToList();
+        await _naveRepository.UpdateAsync(naveDb);
+        
 
-        return new EnlistTripulanteResponse(naveDb.Id, tripulanteDtoList);
+        return _naveMapper.ToEnlistTripulantDto(naveDb);
     }
 }

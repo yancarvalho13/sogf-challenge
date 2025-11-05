@@ -23,8 +23,8 @@ public class NaveController : ControllerBase
     {
         try
         {
-            await _naveService.CreateAsync(request);
-            return Created();
+            var response = await _naveService.CreateAsync(request);
+            return Ok(response);
         }
         catch (Exception e)
         {
@@ -51,8 +51,8 @@ public class NaveController : ControllerBase
     {
         try
         {
-             await _naveService.EnlistTripulante(tripulanteId, naveId);
-             return Ok();
+             var response = await _naveService.EnlistTripulante(tripulanteId, naveId);
+             return Ok(response);
         }
         catch (Exception e)
         {
@@ -94,7 +94,7 @@ public class NaveController : ControllerBase
     {
         try
         {
-            var response = await _naveService.DeleteByIdAsync(id);
+            var response = await _naveService.DeleteAsync(id);
             return response ? Ok() : BadRequest();
         }
         catch (Exception e)

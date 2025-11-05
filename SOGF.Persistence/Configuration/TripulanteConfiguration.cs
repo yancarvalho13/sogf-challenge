@@ -14,10 +14,12 @@ public class TripulanteConfiguration : IEntityTypeConfiguration<Tripulante>
             .ValueGeneratedOnAdd();
 
         builder.Property(t => t.DataCriacao)
-            .ValueGeneratedOnAdd();
+            .ValueGeneratedOnAdd()
+            .HasDefaultValueSql("getDate()");
         
         builder.Property(t => t.DataAtualizacao)
-            .ValueGeneratedOnAddOrUpdate();
+            .ValueGeneratedOnAddOrUpdate()
+            .HasDefaultValueSql("getDate()");
 
         builder.Property(t => t.Nome)
             .IsRequired().HasMaxLength(256);
@@ -29,19 +31,5 @@ public class TripulanteConfiguration : IEntityTypeConfiguration<Tripulante>
         builder.Property(t => t.Especialidade)
             .HasConversion<string>()
             .IsRequired();
-
-        builder.HasMany(t => t.HistoricoDeCombates)
-            .WithOne(rc => rc.PilotoVencedor)
-            .HasForeignKey(rc => rc.PilotoVencedorId)
-            .IsRequired()
-            .OnDelete(DeleteBehavior.Cascade);
-
-        builder.HasMany(t => t.HistoricoDeDerrotas)
-            .WithOne(rc => rc.PilotoPerdedor)
-            .HasForeignKey(rc => rc.PilotoPerdedorId)
-            .IsRequired()
-            .OnDelete(DeleteBehavior.NoAction);
-
-
     }
 }

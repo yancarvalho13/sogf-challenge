@@ -12,8 +12,8 @@ using Solution.Persistence.Contexts;
 namespace Solution.Persistence.Migrations
 {
     [DbContext(typeof(SogfDbContext))]
-    [Migration("20251104144903_InitialTablesMigration")]
-    partial class InitialTablesMigration
+    [Migration("20251105134809_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,11 +73,13 @@ namespace Solution.Persistence.Migrations
 
                     b.Property<DateTime>("DataAtualizacao")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getDate()");
 
                     b.Property<DateTime>("DataCriacao")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getDate()");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -128,9 +130,14 @@ namespace Solution.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PilotoVencedorId");
+                    b.HasIndex("PilotoPerdedorId");
 
-                    b.ToTable("relatorioCombate", (string)null);
+                    b.HasIndex("PilotoVencedorId", "PilotoPerdedorId");
+
+                    b.ToTable("relatorioCombate", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_PilotoVencedorId_PilotoPerdedorId", "[PilotoVencedorId] <> [PilotoPerdedorId]");
+                        });
                 });
 
             modelBuilder.Entity("SOGF.Domain.Model.Tripulante", b =>
@@ -143,11 +150,13 @@ namespace Solution.Persistence.Migrations
 
                     b.Property<DateTime>("DataAtualizacao")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getDate()");
 
                     b.Property<DateTime>("DataCriacao")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getDate()");
 
                     b.Property<string>("Especialidade")
                         .IsRequired()
@@ -190,11 +199,19 @@ namespace Solution.Persistence.Migrations
 
             modelBuilder.Entity("SOGF.Domain.Model.RelatorioCombate", b =>
                 {
+                    b.HasOne("SOGF.Domain.Model.Tripulante", "PilotoPerdedor")
+                        .WithMany("Derrotas")
+                        .HasForeignKey("PilotoPerdedorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("SOGF.Domain.Model.Tripulante", "PilotoVencedor")
-                        .WithMany("HistoricoDeCombates")
+                        .WithMany("Vitorias")
                         .HasForeignKey("PilotoVencedorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("PilotoPerdedor");
 
                     b.Navigation("PilotoVencedor");
                 });
@@ -225,7 +242,9 @@ namespace Solution.Persistence.Migrations
 
             modelBuilder.Entity("SOGF.Domain.Model.Tripulante", b =>
                 {
-                    b.Navigation("HistoricoDeCombates");
+                    b.Navigation("Derrotas");
+
+                    b.Navigation("Vitorias");
                 });
 #pragma warning restore 612, 618
         }

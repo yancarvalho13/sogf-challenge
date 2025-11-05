@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Solution.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialTablesMigration : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,8 +20,8 @@ namespace Solution.Persistence.Migrations
                     Nome = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     Classe = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DataCriacao = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DataAtualizacao = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    DataCriacao = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getDate()"),
+                    DataAtualizacao = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getDate()")
                 },
                 constraints: table =>
                 {
@@ -61,8 +61,8 @@ namespace Solution.Persistence.Migrations
                     NavePilotadaId = table.Column<long>(type: "bigint", nullable: true),
                     Especialidade = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NaveAtualId = table.Column<long>(type: "bigint", nullable: true),
-                    DataCriacao = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DataAtualizacao = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    DataCriacao = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getDate()"),
+                    DataAtualizacao = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getDate()")
                 },
                 constraints: table =>
                 {
@@ -96,6 +96,13 @@ namespace Solution.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_relatorioCombate", x => x.Id);
+                    table.CheckConstraint("CK_PilotoVencedorId_PilotoPerdedorId", "[PilotoVencedorId] <> [PilotoPerdedorId]");
+                    table.ForeignKey(
+                        name: "FK_relatorioCombate_Tripulantes_PilotoPerdedorId",
+                        column: x => x.PilotoPerdedorId,
+                        principalTable: "Tripulantes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_relatorioCombate_Tripulantes_PilotoVencedorId",
                         column: x => x.PilotoVencedorId,
@@ -110,9 +117,14 @@ namespace Solution.Persistence.Migrations
                 column: "NaveDesignadaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_relatorioCombate_PilotoVencedorId",
+                name: "IX_relatorioCombate_PilotoPerdedorId",
                 table: "relatorioCombate",
-                column: "PilotoVencedorId");
+                column: "PilotoPerdedorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_relatorioCombate_PilotoVencedorId_PilotoPerdedorId",
+                table: "relatorioCombate",
+                columns: new[] { "PilotoVencedorId", "PilotoPerdedorId" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tripulantes_NaveAtualId",
