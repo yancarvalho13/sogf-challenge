@@ -21,15 +21,12 @@ public class MissaoConfiguration : IEntityTypeConfiguration<Missao>
             .ValueGeneratedOnUpdate();
 
         builder.Property(mss => mss.ObjetivoMissao)
-            .HasConversion<string>()
             .IsRequired();
         
         builder.Property(mss => mss.SetorGalatico)
-            .HasConversion<string>()
             .IsRequired();
         
         builder.Property(mss => mss.StatusMissao)
-            .HasConversion<string>()
             .IsRequired();
 
         builder.Property(mss => mss.NaveId)

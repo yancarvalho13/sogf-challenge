@@ -9,7 +9,6 @@ public class MissaoMapper : IMapper<Missao, MissaoRequest, MissaoResponse>, IMis
     public Missao ToEntity(MissaoRequest request) =>
         new Missao(request.objetivoMissao,
             request.setorGalatico,
-            request.statusMissao,
             request.naveId,
             request.pilotoId,
             request.tripulantesId.Select(t => new MissaoTripulantes(t)).ToList());

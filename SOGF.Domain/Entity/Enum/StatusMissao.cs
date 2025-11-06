@@ -2,6 +2,6 @@ namespace SOGF.Domain.Model;
 
 public enum StatusMissao
 {
-    Completada,
-    EmAndamento
+    Completada = 1,
+    EmAndamento = 2
 }

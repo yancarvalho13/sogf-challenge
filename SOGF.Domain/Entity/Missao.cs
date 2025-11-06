@@ -13,14 +13,28 @@ public sealed class Missao : BaseEntity
     {
         
     }
-    public Missao(ObjetivoMissao objetivoMissao, SetorGalatico setorGalatico, StatusMissao statusMissao, long naveId, long pilotoId, List<MissaoTripulantes> tripulantes)
+    public Missao(ObjetivoMissao objetivoMissao, SetorGalatico setorGalatico,  long naveId, long pilotoId, List<MissaoTripulantes> tripulantes)
     
     {
         ObjetivoMissao = objetivoMissao;
         SetorGalatico = setorGalatico;
-        StatusMissao = statusMissao;
         NaveId = naveId;
         PilotoId = pilotoId;
         Tripulantes = tripulantes;
+    }
+
+    public void IniciarMissao()
+    {
+        StatusMissao = StatusMissao.EmAndamento;
+    }
+
+    public void FinalizarMissao()
+    {
+        StatusMissao = StatusMissao.Completada;
+    }
+
+    public List<long> GetTripulantesId()
+    {
+        return Tripulantes.Select(t => t.TripulanteId).ToList();
     }
 }

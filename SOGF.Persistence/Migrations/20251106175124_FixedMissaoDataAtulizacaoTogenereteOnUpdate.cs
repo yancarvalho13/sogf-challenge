@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Solution.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class FixedMissaoDataAtulizacaoTogenereteOnUpdate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,9 +34,9 @@ namespace Solution.Persistence.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ObjetivoMissao = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SetorGalatico = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    StatusMissao = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ObjetivoMissao = table.Column<int>(type: "int", nullable: false),
+                    SetorGalatico = table.Column<int>(type: "int", nullable: false),
+                    StatusMissao = table.Column<int>(type: "int", nullable: false),
                     NaveId = table.Column<long>(type: "bigint", nullable: false),
                     PilotoId = table.Column<long>(type: "bigint", nullable: false),
                     DataCriacao = table.Column<DateTime>(type: "datetime2", nullable: false),

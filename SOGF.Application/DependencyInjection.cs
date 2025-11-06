@@ -1,8 +1,10 @@
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using SOGF.Domain.Model;
 using Solution.Application.Contracts.Mapping;
 using Solution.Application.Contracts.Service;
 using Solution.Application.Dto;
+using Solution.Application.Dto.Missao;
 using Solution.Application.Mappers;
 using Solution.Application.Service;
 using Solution.Application.Service.Faccao;
@@ -32,6 +34,7 @@ public static class DependencyInjection
         services.AddScoped<IPilotoMapper, PilotoMapper>();
         services.AddScoped<PilotoMapper>();
         services.AddScoped<IPilotoService, PilotoService>();
+        services.AddValidatorsFromAssembly(typeof(MissaoRequest).Assembly, includeInternalTypes: true);
 
         
         return services;

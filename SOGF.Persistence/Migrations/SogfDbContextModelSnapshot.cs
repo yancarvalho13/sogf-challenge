@@ -74,20 +74,17 @@ namespace Solution.Persistence.Migrations
                     b.Property<long>("NaveId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("ObjetivoMissao")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ObjetivoMissao")
+                        .HasColumnType("int");
 
                     b.Property<long>("PilotoId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("SetorGalatico")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("SetorGalatico")
+                        .HasColumnType("int");
 
-                    b.Property<string>("StatusMissao")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("StatusMissao")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

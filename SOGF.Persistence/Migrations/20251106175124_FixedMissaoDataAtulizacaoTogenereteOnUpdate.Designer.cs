@@ -12,8 +12,8 @@ using Solution.Persistence.Contexts;
 namespace Solution.Persistence.Migrations
 {
     [DbContext(typeof(SogfDbContext))]
-    [Migration("20251106015020_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20251106175124_FixedMissaoDataAtulizacaoTogenereteOnUpdate")]
+    partial class FixedMissaoDataAtulizacaoTogenereteOnUpdate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,7 +67,7 @@ namespace Solution.Persistence.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("DataAtualizacao")
-                        .ValueGeneratedOnAddOrUpdate()
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DataCriacao")
@@ -77,20 +77,17 @@ namespace Solution.Persistence.Migrations
                     b.Property<long>("NaveId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("ObjetivoMissao")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ObjetivoMissao")
+                        .HasColumnType("int");
 
                     b.Property<long>("PilotoId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("SetorGalatico")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("SetorGalatico")
+                        .HasColumnType("int");
 
-                    b.Property<string>("StatusMissao")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("StatusMissao")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -150,7 +147,7 @@ namespace Solution.Persistence.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("DataAtualizacao")
-                        .ValueGeneratedOnAddOrUpdate()
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DataCriacao")

@@ -8,7 +8,7 @@ namespace Solution.Api.Controllers;
 [ApiController]
 public class GenericController<TEntity, TRequest, TResponse>(
     IGenericService<TEntity, TRequest, TResponse> genericService)
-    : ControllerBase,
+    : BaseController,
         IGenericController<TEntity, TRequest, TResponse>
 
 {
