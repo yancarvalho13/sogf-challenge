@@ -1,37 +1,27 @@
 namespace SOGF.Domain.Model;
 
-public sealed class Nave : BaseModel
+public sealed class Nave : BaseEntity
 {
     public string Nome { get; private set; }
     public TipoNave Classe { get; private set; }
-    public Tripulante? Piloto { get; private set;}
-    public ICollection<Tripulante> Tripulantes { get; private set; } = new List<Tripulante>(); 
+    
+    public long CapacidadeTripulacao { get; private set; }
+ 
     public StatusOperacional Status { get; private set; }
 
-    public ICollection<Missao>? Missoes { get; private set; } = new List<Missao>();
+    public  long FaccaoId { get; private set; }
+    
+    public Faccao Faccao { get; private set; }
 
     public Nave() {}
 
-    public Nave(string nome, TipoNave classe, Tripulante? piloto, StatusOperacional status)
+    public Nave(string nome, TipoNave classe, long capacidadeTripulacao, StatusOperacional status, long faccaoId)
     {
         Nome = nome;
         Classe = classe;
-        Piloto = piloto;
+        CapacidadeTripulacao = capacidadeTripulacao;
         Status = status;
-    }
-
-  
-
-    public void EnlistTripulante(Tripulante tripulante)
-    {
-        Tripulantes.Add(tripulante);
-    }
-
-    public Nave(string nome, TipoNave classe, StatusOperacional status)
-    {
-        Nome = nome;
-        Classe = classe;
-        Status = status;
+        FaccaoId = faccaoId;
     }
 
     public long PilotId()

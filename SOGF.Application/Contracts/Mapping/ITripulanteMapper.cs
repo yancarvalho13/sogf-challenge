@@ -1,8 +1,7 @@
 using SOGF.Domain.Model;
-using Solution.Application.Contracts.Mapping;
 using Solution.Application.Dto;
 
-namespace Solution.Application.Mappers;
+namespace Solution.Application.Contracts.Mapping;
 
 public interface ITripulanteMapper : IMapper<Tripulante, TripulanteRequest, TripulanteResponse>
 {

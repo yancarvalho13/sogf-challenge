@@ -26,20 +26,45 @@ public class RelatorioCombateConfiguration : IEntityTypeConfiguration<RelatorioC
             .HasConversion<string>()
             .IsRequired();
 
-        builder.HasOne(rc => rc.PilotoVencedor)
-            .WithMany(p => p.Vitorias)
-            .HasForeignKey(rc => rc.PilotoPerdedorId)
-            .OnDelete(DeleteBehavior.Restrict);
+        builder.Property(rc => rc.DescricaoTatica)
+            .HasMaxLength(500)
+            .IsRequired();
 
-        builder.HasOne(rc => rc.PilotoPerdedor)
-            .WithMany(p => p.Derrotas)
-            .HasForeignKey(rc => rc.PilotoPerdedorId)
-            .OnDelete(DeleteBehavior.Restrict);
-            
-        builder.ToTable(t => 
-            t.HasCheckConstraint("CK_PilotoVencedorId_PilotoPerdedorId",
-                "[PilotoVencedorId] <> [PilotoPerdedorId]"));
+        builder.Property(rc => rc.FaccaoVencedoraId)
+            .IsRequired();
 
-        builder.HasIndex(rc => new { rc.PilotoVencedorId, rc.PilotoPerdedorId });
+        builder.OwnsMany(rc => rc.NavesEngajadas, owned =>
+        {
+            owned.ToTable("EngajamentosCombate");
+
+            owned.WithOwner().HasForeignKey("RelatorioCombateId");
+
+            owned.HasKey(e => e.Id);
+
+            owned.Property(e => e.Id)
+                .ValueGeneratedOnAdd();
+
+            owned.Property(e => e.NaveId)
+                .IsRequired();
+
+            owned.Property(e => e.DataAtualizacao)
+                .ValueGeneratedOnUpdate();
+
+            owned.Property(e => e.PilotoId)
+                .IsRequired();
+
+            owned.Property(e => e.MissaoId)
+                .IsRequired();
+
+            owned.Property(e => e.Resultado)
+                .HasConversion<string>()
+                .IsRequired();
+
+            owned.HasIndex(
+                    "RelatorioCombateId",
+                    nameof(EngajamentoCombate.NaveId),
+                    nameof(EngajamentoCombate.PilotoId))
+                .IsUnique();
+        });
     }
 }

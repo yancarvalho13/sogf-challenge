@@ -4,9 +4,5 @@ using Solution.Persistence.Contexts;
 
 namespace Solution.Persistence.Repositories;
 
-public class TripulanteRepository : GenericRepository<Tripulante>, ITripulanteRepository
-{
-    public TripulanteRepository(SogfDbContext context) : base(context)
-    {
-    }
-}
+public class TripulanteRepository(SogfDbContext context)
+    : GenericRepository<Tripulante>(context), ITripulanteRepository;

@@ -27,13 +27,18 @@ public class NaveConfiguration : IEntityTypeConfiguration<Nave>
 
         builder.Property(nv => nv.Classe)
             .HasConversion<string>().IsRequired();
+
+        builder.Property(nv => nv.CapacidadeTripulacao)
+            .IsRequired();
         
         builder.Property(nv => nv.Status)
             .HasConversion<string>().IsRequired();
-
-        builder.HasMany(nv => nv.Missoes)
-            .WithOne(mss => mss.NaveDesignada)
-            .HasForeignKey(mss => mss.NaveDesignadaId);
+        
+        builder.HasOne(nv => nv.Faccao)
+            .WithMany(f => f.Naves)
+            .HasForeignKey(nv => nv.FaccaoId)
+            .OnDelete(DeleteBehavior.Restrict);
+        
         
     }
 }

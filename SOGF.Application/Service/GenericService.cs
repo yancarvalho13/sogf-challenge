@@ -8,7 +8,7 @@ using Solution.Application.Mappers;
 namespace Solution.Application.Service;
 
 public class GenericService<TEntity, TRequest, TResponse> : IGenericService<TEntity, TRequest, TResponse> 
-where TEntity : BaseModel 
+where TEntity : BaseEntity 
 {
     private readonly IGenericRepository<TEntity> _genericRepository;
     private readonly IMapper<TEntity, TRequest, TResponse> _mapper;

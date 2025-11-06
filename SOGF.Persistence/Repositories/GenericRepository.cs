@@ -5,7 +5,7 @@ using Solution.Persistence.Contexts;
 
 namespace Solution.Persistence.Repositories;
 
-public class GenericRepository<T> : IGenericRepository<T> where T : BaseModel
+public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 {
     private readonly SogfDbContext _context;
     private readonly DbSet<T> _dbSet;

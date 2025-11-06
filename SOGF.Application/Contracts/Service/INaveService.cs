@@ -6,6 +6,5 @@ public interface INaveService : IGenericService<SOGF.Domain.Model.Nave,CreateNav
 {
     
     
-    Task<EnlistTripulanteResponse> EnlistTripulante(long tripulanteId, long naveId);
 
 }

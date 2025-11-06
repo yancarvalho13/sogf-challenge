@@ -3,7 +3,7 @@ using SOGF.Domain.Model;
 
 namespace Solution.Application.Contracts.Persistence;
 
-public interface IGenericRepository<T> where T : BaseModel
+public interface IGenericRepository<T> where T : BaseEntity
 {
     Task<IReadOnlyList<T>> GetAllAsync();
     Task<T?> GetByIdAsync(long id);

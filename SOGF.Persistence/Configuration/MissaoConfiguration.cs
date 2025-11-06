@@ -18,15 +18,43 @@ public class MissaoConfiguration : IEntityTypeConfiguration<Missao>
         builder.Property(mss => mss.DataCriacao)
             .ValueGeneratedOnAdd();
         builder.Property(mss => mss.DataAtualizacao)
-            .ValueGeneratedOnAddOrUpdate();
+            .ValueGeneratedOnUpdate();
 
-        builder.Property(mss => mss.Descricao)
+        builder.Property(mss => mss.ObjetivoMissao)
+            .HasConversion<string>()
             .IsRequired();
-
-        builder.Property(mss => mss.Status)
+        
+        builder.Property(mss => mss.SetorGalatico)
+            .HasConversion<string>()
+            .IsRequired();
+        
+        builder.Property(mss => mss.StatusMissao)
             .HasConversion<string>()
             .IsRequired();
 
+        builder.Property(mss => mss.NaveId)
+            .IsRequired();
+        
+        builder.Property(mss => mss.PilotoId)
+            .IsRequired();
+
+        builder.OwnsMany(mss => mss.Tripulantes, owned =>
+        {
+            owned.ToTable("missaoTripulantes");
+            
+            owned.WithOwner().HasForeignKey("MissaoId");
+
+            owned.HasKey("Id");
+            owned.Property<long>("Id").ValueGeneratedOnAdd();
+
+            
+            owned.Property(x => x.TripulanteId)
+                .HasColumnName("TripulanteId")
+                .IsRequired();
+            
+            owned.HasIndex("MissaoId", nameof(MissaoTripulantes.TripulanteId))
+                .IsUnique();
+        });
 
     }
 }

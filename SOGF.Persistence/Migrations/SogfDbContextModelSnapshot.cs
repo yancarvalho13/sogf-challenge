@@ -22,6 +22,39 @@ namespace Solution.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("SOGF.Domain.Model.Faccao", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("DataAtualizacao")
+                        .ValueGeneratedOnUpdate()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NivelAmeaca")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("StatusDiplomatico")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Faccoes", (string)null);
+                });
+
             modelBuilder.Entity("SOGF.Domain.Model.Missao", b =>
                 {
                     b.Property<long>("Id")
@@ -31,27 +64,32 @@ namespace Solution.Persistence.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("DataAtualizacao")
-                        .ValueGeneratedOnAddOrUpdate()
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DataCriacao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Descricao")
+                    b.Property<long>("NaveId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("ObjetivoMissao")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long?>("NaveDesignadaId")
+                    b.Property<long>("PilotoId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("Status")
+                    b.Property<string>("SetorGalatico")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StatusMissao")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("NaveDesignadaId");
 
                     b.ToTable("missoes", (string)null);
                 });
@@ -63,6 +101,9 @@ namespace Solution.Persistence.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("CapacidadeTripulacao")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Classe")
                         .IsRequired()
@@ -78,6 +119,9 @@ namespace Solution.Persistence.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("getDate()");
 
+                    b.Property<long>("FaccaoId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(256)
@@ -89,7 +133,38 @@ namespace Solution.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("FaccaoId");
+
                     b.ToTable("Naves", (string)null);
+                });
+
+            modelBuilder.Entity("SOGF.Domain.Model.Piloto", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("DataAtualizacao")
+                        .ValueGeneratedOnUpdate()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("Patente")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Pilotos", (string)null);
                 });
 
             modelBuilder.Entity("SOGF.Domain.Model.RelatorioCombate", b =>
@@ -111,14 +186,12 @@ namespace Solution.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("DescricaoDeEventos")
+                    b.Property<string>("DescricaoTatica")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
-                    b.Property<long>("PilotoPerdedorId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("PilotoVencedorId")
+                    b.Property<long>("FaccaoVencedoraId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Resultado")
@@ -127,14 +200,7 @@ namespace Solution.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PilotoPerdedorId");
-
-                    b.HasIndex("PilotoVencedorId", "PilotoPerdedorId");
-
-                    b.ToTable("relatorioCombate", null, t =>
-                        {
-                            t.HasCheckConstraint("CK_PilotoVencedorId_PilotoPerdedorId", "[PilotoVencedorId] <> [PilotoPerdedorId]");
-                        });
+                    b.ToTable("relatorioCombate", (string)null);
                 });
 
             modelBuilder.Entity("SOGF.Domain.Model.Tripulante", b =>
@@ -159,12 +225,6 @@ namespace Solution.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long?>("NaveAtualId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("NavePilotadaId")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(256)
@@ -176,72 +236,98 @@ namespace Solution.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("NaveAtualId");
-
-                    b.HasIndex("NavePilotadaId")
-                        .IsUnique()
-                        .HasFilter("[NavePilotadaId] IS NOT NULL");
-
                     b.ToTable("Tripulantes", (string)null);
                 });
 
             modelBuilder.Entity("SOGF.Domain.Model.Missao", b =>
                 {
-                    b.HasOne("SOGF.Domain.Model.Nave", "NaveDesignada")
-                        .WithMany("Missoes")
-                        .HasForeignKey("NaveDesignadaId");
+                    b.OwnsMany("SOGF.Domain.Model.MissaoTripulantes", "Tripulantes", b1 =>
+                        {
+                            b1.Property<long>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("bigint");
 
-                    b.Navigation("NaveDesignada");
-                });
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<long>("Id"));
 
-            modelBuilder.Entity("SOGF.Domain.Model.RelatorioCombate", b =>
-                {
-                    b.HasOne("SOGF.Domain.Model.Tripulante", "PilotoPerdedor")
-                        .WithMany("Derrotas")
-                        .HasForeignKey("PilotoPerdedorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                            b1.Property<long>("MissaoId")
+                                .HasColumnType("bigint");
 
-                    b.HasOne("SOGF.Domain.Model.Tripulante", "PilotoVencedor")
-                        .WithMany("Vitorias")
-                        .HasForeignKey("PilotoVencedorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                            b1.Property<long>("TripulanteId")
+                                .HasColumnType("bigint")
+                                .HasColumnName("TripulanteId");
 
-                    b.Navigation("PilotoPerdedor");
+                            b1.HasKey("Id");
 
-                    b.Navigation("PilotoVencedor");
-                });
+                            b1.HasIndex("MissaoId", "TripulanteId")
+                                .IsUnique();
 
-            modelBuilder.Entity("SOGF.Domain.Model.Tripulante", b =>
-                {
-                    b.HasOne("SOGF.Domain.Model.Nave", "NaveAtual")
-                        .WithMany("Tripulantes")
-                        .HasForeignKey("NaveAtualId");
+                            b1.ToTable("missaoTripulantes", (string)null);
 
-                    b.HasOne("SOGF.Domain.Model.Nave", "NavePilotada")
-                        .WithOne("Piloto")
-                        .HasForeignKey("SOGF.Domain.Model.Tripulante", "NavePilotadaId");
-
-                    b.Navigation("NaveAtual");
-
-                    b.Navigation("NavePilotada");
-                });
-
-            modelBuilder.Entity("SOGF.Domain.Model.Nave", b =>
-                {
-                    b.Navigation("Missoes");
-
-                    b.Navigation("Piloto");
+                            b1.WithOwner()
+                                .HasForeignKey("MissaoId");
+                        });
 
                     b.Navigation("Tripulantes");
                 });
 
-            modelBuilder.Entity("SOGF.Domain.Model.Tripulante", b =>
+            modelBuilder.Entity("SOGF.Domain.Model.Nave", b =>
                 {
-                    b.Navigation("Derrotas");
+                    b.HasOne("SOGF.Domain.Model.Faccao", "Faccao")
+                        .WithMany("Naves")
+                        .HasForeignKey("FaccaoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
-                    b.Navigation("Vitorias");
+                    b.Navigation("Faccao");
+                });
+
+            modelBuilder.Entity("SOGF.Domain.Model.RelatorioCombate", b =>
+                {
+                    b.OwnsMany("SOGF.Domain.Model.EngajamentoCombate", "NavesEngajadas", b1 =>
+                        {
+                            b1.Property<long>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("bigint");
+
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<long>("Id"));
+
+                            b1.Property<DateTime>("DataAtualizacao")
+                                .ValueGeneratedOnUpdate()
+                                .HasColumnType("datetime2");
+
+                            b1.Property<long>("MissaoId")
+                                .HasColumnType("bigint");
+
+                            b1.Property<long>("NaveId")
+                                .HasColumnType("bigint");
+
+                            b1.Property<long>("PilotoId")
+                                .HasColumnType("bigint");
+
+                            b1.Property<long>("RelatorioCombateId")
+                                .HasColumnType("bigint");
+
+                            b1.Property<string>("Resultado")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("RelatorioCombateId", "NaveId", "PilotoId")
+                                .IsUnique();
+
+                            b1.ToTable("EngajamentosCombate", (string)null);
+
+                            b1.WithOwner()
+                                .HasForeignKey("RelatorioCombateId");
+                        });
+
+                    b.Navigation("NavesEngajadas");
+                });
+
+            modelBuilder.Entity("SOGF.Domain.Model.Faccao", b =>
+                {
+                    b.Navigation("Naves");
                 });
 #pragma warning restore 612, 618
         }

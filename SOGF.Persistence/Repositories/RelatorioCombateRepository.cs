@@ -4,9 +4,5 @@ using Solution.Persistence.Contexts;
 
 namespace Solution.Persistence.Repositories;
 
-public class RelatorioCombateRepository : GenericRepository<RelatorioCombate>, IRelatorioCombateRepository
-{
-    public RelatorioCombateRepository(SogfDbContext context) : base(context)
-    {
-    }
-}
+public class RelatorioCombateRepository(SogfDbContext context)
+    : GenericRepository<RelatorioCombate>(context), IRelatorioCombateRepository;

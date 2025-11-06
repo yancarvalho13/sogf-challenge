@@ -1,14 +1,15 @@
 namespace SOGF.Domain.Model;
 
-public sealed class RelatorioCombate : BaseModel
+public sealed class RelatorioCombate : BaseEntity
 {
     public DateTime Data { get; private set; }
     public ResultadoCombate Resultado { get; private set; }
-    public string DescricaoDeEventos { get; private set; }
     
-    public long PilotoVencedorId { get; private set;}
-    public Tripulante PilotoVencedor { get; private set; }
+    public string DescricaoTatica { get; private set;}
     
-    public long PilotoPerdedorId { get; private set; }
-    public Tripulante PilotoPerdedor { get; private set; }
+    public long FaccaoVencedoraId { get; private set; }
+    
+    public List<EngajamentoCombate> NavesEngajadas {get; private set;}
+    
+    
 }
