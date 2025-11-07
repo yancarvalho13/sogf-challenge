@@ -24,6 +24,7 @@ public static class DependencyInjection
         services.AddScoped<IPilotoRepository, PilotoRepository>();
         services.AddScoped<IRelatorioCombateRepository, RelatorioCombateRepository>();
         services.AddScoped<ILlMAdapter, GeminiAdapter>();
+        services.AddScoped<IUserRepository, UserRepository>();
 
         return services;
     }

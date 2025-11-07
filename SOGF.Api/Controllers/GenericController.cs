@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Solution.Api.Contracts;
@@ -54,7 +55,8 @@ public class GenericController<TEntity, TRequest, TResponse>(
         }
     }
 
-    [HttpDelete("[controller]/{id}")]
+    [HttpPatch("[controller]/{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Update(TRequest request, long id)
     {
         try
@@ -69,6 +71,7 @@ public class GenericController<TEntity, TRequest, TResponse>(
     }
 
     [HttpDelete("[controller]/{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> DeleteById(long id)
     {
         try

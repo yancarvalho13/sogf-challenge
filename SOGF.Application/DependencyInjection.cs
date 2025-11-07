@@ -2,6 +2,7 @@ using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using SOGF.Domain.Model;
 using Solution.Application.Contracts.Mapping;
+using Solution.Application.Contracts.Security;
 using Solution.Application.Contracts.Service;
 using Solution.Application.Dto;
 using Solution.Application.Dto.Missao;
@@ -12,7 +13,9 @@ using Solution.Application.Service.Faccao;
 using Solution.Application.Service.Missao;
 using Solution.Application.Service.Nave;
 using Solution.Application.Service.Piloto;
+using Solution.Application.Service.Security;
 using Solution.Application.Service.Tripulante;
+using Solution.Application.Service.User;
 
 namespace Solution.Application;
 
@@ -39,7 +42,10 @@ public static class DependencyInjection
         services.AddScoped<RelatorioCombateMapper>();
         services.AddScoped<IRelatorioCombateService, RelatorioCombateService>();
         services.AddValidatorsFromAssembly(typeof(MissaoRequest).Assembly, includeInternalTypes: true);
-
+        services.AddScoped<ITokenProvider, TokenProvider>();
+        services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IUserMapper, UserMapper>();
+        services.AddScoped<UserMapper>();
         
         return services;
     }

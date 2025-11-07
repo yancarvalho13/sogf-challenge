@@ -5,6 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <RootNamespace>Solution.Application</RootNamespace>
+        <UserSecretsId>90b4c81c-2c1d-4480-b94b-6025c840647e</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,6 +14,16 @@
 
     <ItemGroup>
       <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.10" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
+        <HintPath>..\..\..\.nuget\packages\microsoft.extensions.configuration.abstractions\9.0.10\lib\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+      </Reference>
+      <Reference Include="Microsoft.IdentityModel.Tokens">
+        <HintPath>..\..\..\.nuget\packages\microsoft.identitymodel.tokens\7.7.1\lib\net8.0\Microsoft.IdentityModel.Tokens.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SOGF.Domain.Entity;
 using SOGF.Domain.Model;
 
 namespace Solution.Persistence.Contexts;
@@ -18,4 +19,5 @@ public class SogfDbContext : DbContext
     public DbSet<Tripulante> Tripulantes { get; set; }
     public DbSet<RelatorioCombate> RelatorioCombates { get; set; }
     public DbSet<Missao> Missoes { get; set; }
+    public DbSet<User> Usuarios { get; set; }
 }

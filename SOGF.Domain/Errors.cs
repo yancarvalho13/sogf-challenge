@@ -20,5 +20,6 @@ public static class Errors
     public static Error AiModelComunicationFailure { get; } =
         new("AiModelComunicationFailure", ErrorType.BadRequest, "Falha de comunicação com o AiModel");
 
-
+    public static Error InvalidCredentials { get; } =
+        new("InvalidCredentials", ErrorType.Unauthorized, "Credenciais Inválidas");
 }
