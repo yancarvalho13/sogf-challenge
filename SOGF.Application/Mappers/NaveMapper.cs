@@ -4,9 +4,9 @@ using Solution.Application.Dto;
 
 namespace Solution.Application.Mappers;
 
-public class NaveMapper : IMapper<Nave, CreateNaveRequest, NaveResponse>,INaveMapper
+public class NaveMapper : IMapper<Nave, NaveRequest, NaveResponse>,INaveMapper
 {
-    public Nave ToEntity(CreateNaveRequest request) =>
+    public Nave ToEntity(NaveRequest request) =>
         new Nave(request.nome,
             request.classe,
             request.capacidadeTripulacao,

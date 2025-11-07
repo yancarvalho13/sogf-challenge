@@ -1,8 +1,7 @@
-namespace SOGF.Domain.Model;
+namespace SOGF.Domain.Entity.Enum;
 
 public enum ResultadoCombate
 {
-    Vitoria,
-    Derrota,
-    Empate
+    Vitoria = 1,
+    Derrota = 2
 }

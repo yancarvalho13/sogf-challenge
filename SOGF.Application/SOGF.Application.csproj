@@ -26,4 +26,8 @@
       </Reference>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Dto\GeminiAdapter\" />
+    </ItemGroup>
+
 </Project>

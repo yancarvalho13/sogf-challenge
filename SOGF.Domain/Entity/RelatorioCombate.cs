@@ -1,3 +1,5 @@
+using SOGF.Domain.Entity.Enum;
+
 namespace SOGF.Domain.Model;
 
 public sealed class RelatorioCombate : BaseEntity

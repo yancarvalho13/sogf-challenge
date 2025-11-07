@@ -4,9 +4,9 @@ namespace Solution.Application.Contracts.Service;
 
 public interface IGenericService<TEntity , TRequest, TResponse> 
 {
-    Task<List<TResponse>> GetAllAsync();
-    Task<TResponse?> GetByIdAsync(long id);
-    Task<TResponse> CreateAsync(TRequest request);
-    Task<TResponse> UpdateAsync(TRequest request, long id);
-    Task<bool> DeleteAsync(long id);
+    Task<Result<List<TResponse>>> GetAllAsync();
+    Task<Result<TResponse?>> GetByIdAsync(long id);
+    Task<Result<TResponse>> CreateAsync(TRequest request);
+    Task<Result<TResponse>> UpdateAsync(TRequest request, long id);
+    Task<Result<bool>> DeleteAsync(long id);
 }

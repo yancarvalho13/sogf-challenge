@@ -1,18 +1,22 @@
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using Microsoft.AspNetCore.Identity;
 using SOGF.Domain;
 using Solution.Application.Contracts.Mapping;
 using Solution.Application.Contracts.Persistence;
 using Solution.Application.Contracts.Security;
 using Solution.Application.Contracts.Service;
 using Solution.Application.Dto;
+using Solution.Application.Validations;
 
 namespace Solution.Application.Service.User;
 
 public class UserService(
     IUserRepository userRepository,
     ITokenProvider tokenProvider,
-    IUserMapper mapper2)
-    : GenericService<SOGF.Domain.Entity.User, UserRequest, UserResponse>(userRepository, mapper2), IUserService
+    IUserMapper mapper2,
+    UserRequestValidator validator)
+    : GenericService<SOGF.Domain.Entity.User, UserRequest, UserResponse>(userRepository, mapper2, validator), IUserService
 {
     public async Task<Result<string>> Login(UserLoginRequest request)
     {
@@ -25,6 +29,10 @@ public class UserService(
 
     public async Task<Result<UserResponse>> Register(UserRequest request)
     {
+        var isValid = await validator.ValidateAsync(request);
+        var validationErrors =  ValidateRequest(isValid);
+        if (validationErrors.Count != 0) return validationErrors;
+
         var hashPassword = HashPassword(request.password);
         var user = new SOGF.Domain.Entity.User(request.username, hashPassword,
             request.roles.Select(r => new UserRoles(r)).ToList());
@@ -45,5 +53,15 @@ public class UserService(
         ));
 
         return hash;
+    }
+    
+    private List<ValidationFailureResponse> ValidateRequest(ValidationResult validationResult)
+    {
+
+        return validationResult.IsValid
+            ? new List<ValidationFailureResponse>()
+            : validationResult.Errors.Select(e =>
+                new ValidationFailureResponse(e.PropertyName, e.ErrorMessage, e.AttemptedValue.ToString())).ToList();
+
     }
 }

@@ -1,3 +1,4 @@
+using SOGF.Domain.Entity.Enum;
 using SOGF.Domain.Model;
 
 namespace Solution.Application.Dto.RelatorioCombate;

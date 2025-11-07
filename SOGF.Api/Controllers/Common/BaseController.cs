@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using SOGF.Domain.Exception;
+using Solution.Application;
 
 namespace Solution.Api;
 
 [ApiController]
+
 public class BaseController : ControllerBase
 {
     protected IActionResult Problem(Error error)
@@ -21,6 +23,11 @@ public class BaseController : ControllerBase
             statusCode: statusCode,
             title: error.Description
         );
+    }
+
+    protected IActionResult HandleResponse(Result response)
+    {
+        return response.isSuccess ? Ok(response) : Problem(response.Error);
     }
     
 }

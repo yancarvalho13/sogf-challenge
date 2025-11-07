@@ -22,4 +22,7 @@ public static class Errors
 
     public static Error InvalidCredentials { get; } =
         new("InvalidCredentials", ErrorType.Unauthorized, "Credenciais Inválidas");
+
+    public static Error RecurseNotFound { get; } =
+        new("RecurseNotFound", ErrorType.NotFound, "Recurso na encontado na base de dados");
 }

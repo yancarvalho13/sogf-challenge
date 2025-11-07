@@ -23,20 +23,13 @@ public class AuthenticationController : BaseController
     public async Task<IActionResult> Login(UserLoginRequest request)
     {
         var response = await _userService.Login(request);
-        return response.isSuccess ? Ok(response) : Problem(response.Error);
+        return HandleResponse(response);
     }
 
     [HttpPost("/Register")]
     public async Task<IActionResult> Register([FromBody]UserRequest request)
     {
         var response = await _userService.Register(request);
-        return response.isSuccess ? Ok(response) : Problem(response.Error);
-    }
-    
-    [Authorize(Roles = "Admin")]
-    [HttpPost("/validate")]
-    public IActionResult ValidateRole()
-    {
-        return Ok();
+        return HandleResponse(response);
     }
 }

@@ -20,4 +20,10 @@ public class RelatorioCombateMapper : IRelatorioCombateMapper
                         ne.RelatorioCombateId,
                         ne.Resultado)).ToList());
     }
+
+    public HistoricoCombateResponse ToHistoricoDto(List<RelatorioCombate> vitorias, List<RelatorioCombate> derrotas)
+    {
+        return new HistoricoCombateResponse(vitorias.Select(ToDto).ToList(),
+            derrotas.Select(ToDto).ToList());
+    }
 }

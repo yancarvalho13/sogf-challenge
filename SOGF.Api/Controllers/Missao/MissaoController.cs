@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Solution.Api.Contracts;
 using Solution.Application.Contracts.Service;
@@ -7,6 +8,7 @@ namespace Solution.Api.Controllers.Missao;
 
 [ApiController]
 [Route("api/v1/")]
+[Authorize]
 public class MissaoController : BaseController, IMissaoController
 {
     private readonly IMissaoService _missaoService;
@@ -21,8 +23,7 @@ public class MissaoController : BaseController, IMissaoController
     {
         
          var response= await _missaoService.IniciarMissao(request);
-         return response.isSuccess ? Ok(response) : Problem(response.Error);
-        
+         return HandleResponse(response);
     }
 
     
@@ -30,20 +31,20 @@ public class MissaoController : BaseController, IMissaoController
     public async Task<IActionResult> FinalizarMissao(long id)
     {
         var response = await _missaoService.FinalizaMissao(id);
-        return response.isSuccess ? Ok(response) : Problem(response.Error);
+        return HandleResponse(response);
     }
 
     [HttpGet]
     public async Task<IActionResult> BuscarMissoes()
     {
         var response = await _missaoService.BuscarMissoes();
-        return Ok(response);
+        return HandleResponse(response);
     }
 
     [HttpGet("{id:long}")]
     public async Task<IActionResult> BuscarPorId(long id)
     {
         var response = await _missaoService.BuscarMissao(id);
-        return response.isSuccess ? Ok(response) : Problem(response.Error);
+        return HandleResponse(response);
     }
 }

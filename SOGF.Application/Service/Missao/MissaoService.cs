@@ -6,6 +6,7 @@ using Solution.Application.Contracts.Persistence;
 using Solution.Application.Contracts.Service;
 using Solution.Application.Dto;
 using Solution.Application.Dto.Missao;
+using Solution.Application.Validations;
 using ValidationResult = FluentValidation.Results.ValidationResult;
 
 namespace Solution.Application.Service.Missao;
@@ -17,16 +18,16 @@ public class MissaoService : IMissaoService
     private readonly IPilotoRepository _pilotoRepository;
     private readonly ITripulanteRepository _tripulanteRepository;
     private readonly IMissaoMapper _missaoMapper;
-    private readonly IValidator<MissaoRequest> _validator;
+    private readonly MissaoRequestValidator _validator;
 
-    public MissaoService(IMissaoRepository missaoRepository, IMissaoMapper missaoMapper, IValidator<MissaoRequest> validator, ITripulanteRepository tripulanteRepository, IPilotoRepository pilotoRepository, INaveRepository naveRepository)
+    public MissaoService(IMissaoRepository missaoRepository, IMissaoMapper missaoMapper, IValidator<MissaoRequest> validator, ITripulanteRepository tripulanteRepository, IPilotoRepository pilotoRepository, INaveRepository naveRepository, MissaoRequestValidator validator1)
     {
         _missaoRepository = missaoRepository;
         _missaoMapper = missaoMapper;
-        _validator = validator;
         _tripulanteRepository = tripulanteRepository;
         _pilotoRepository = pilotoRepository;
         _naveRepository = naveRepository;
+        _validator = validator1;
     }
 
     public async Task<Result<MissaoResponse>> IniciarMissao(MissaoRequest request)
@@ -65,7 +66,7 @@ public class MissaoService : IMissaoService
 
     }
 
-    public async Task<List<MissaoResponse>> BuscarMissoes()
+    public async Task<Result<List<MissaoResponse>>> BuscarMissoes()
     {
         var missaoDb = await _missaoRepository.GetAllAsync();
         var response = missaoDb.Select(m => _missaoMapper.ToDto(m)).ToList();

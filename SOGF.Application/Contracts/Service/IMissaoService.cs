@@ -6,7 +6,7 @@ namespace Solution.Application.Contracts.Service;
 public interface IMissaoService
 {
     Task<Result<MissaoResponse>> IniciarMissao(MissaoRequest request);
-    Task<List<MissaoResponse>> BuscarMissoes();
+    Task<Result<List<MissaoResponse>>> BuscarMissoes();
 
     Task<Result<MissaoResponse>> BuscarMissao(long id);
     Task<Result<MissaoResponse>> FinalizaMissao(long id);

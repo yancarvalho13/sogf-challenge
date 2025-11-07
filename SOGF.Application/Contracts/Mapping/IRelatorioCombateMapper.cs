@@ -7,4 +7,5 @@ public interface IRelatorioCombateMapper
 {
     RelatorioCombateResponse ToDto(RelatorioCombate entity);
 
+    HistoricoCombateResponse ToHistoricoDto(List<RelatorioCombate> vitorias, List<RelatorioCombate> derrotas);
 }

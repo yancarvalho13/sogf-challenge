@@ -1,3 +1,5 @@
+using SOGF.Domain.Entity.Enum;
+
 namespace SOGF.Domain.Model;
 
 public class EngajamentoCombate : BaseEntity

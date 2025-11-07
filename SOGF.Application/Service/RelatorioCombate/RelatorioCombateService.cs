@@ -1,3 +1,4 @@
+using SOGF.Domain.Entity.Enum;
 using SOGF.Domain.Model;
 using Solution.Api.Contracts;
 using Solution.Application.Contracts.Mapping;
@@ -79,7 +80,41 @@ public class RelatorioCombateService : IRelatorioCombateService
 
         await _repository.CreateAsync(relatorio);
 
-        return _mapper.ToDto(relatorio);
+        return _mapper.ToDto(relatorio);    
+    }
 
+    public async Task<Result<HistoricoCombateResponse>> BuscarRelatorioPiloto(long id)
+    {
+        
+        var relatorios = await _repository.GetAllAsync();
+        var vitorias = relatorios.Where(r
+            => r.NavesEngajadas.Any(ne =>
+                ne.PilotoId == id && ne.Resultado == ResultadoCombate.Vitoria)).ToList();
+        
+        var derrotas = relatorios.Where(r
+            => r.NavesEngajadas.Any(ne =>
+                ne.PilotoId == id && ne.Resultado == ResultadoCombate.Derrota)).ToList();
+
+        var relatorioDoPiloto = new List<RelatorioCombate>();
+        relatorioDoPiloto.AddRange(vitorias);
+        relatorioDoPiloto.AddRange(derrotas);
+        var response = _mapper.ToHistoricoDto(vitorias, derrotas);
+        
+        return response;
+    }
+
+    public async Task<Result<HistoricoCombateResponse>> BuscarRelatorioFaccao(long id)
+    {
+        var relatorios = await _repository.GetAllAsync();
+        var vitorias = relatorios.Where(r => r.FaccaoVencedoraId.Equals(id)).ToList();
+        
+        var derrotas = relatorios.Where(r => r.FaccaoVencedoraId != id).ToList();
+
+        var relatorioDoPiloto = new List<RelatorioCombate>();
+        relatorioDoPiloto.AddRange(vitorias);
+        relatorioDoPiloto.AddRange(derrotas);
+        var response = _mapper.ToHistoricoDto(vitorias, derrotas);
+            
+        return response;
     }
 }

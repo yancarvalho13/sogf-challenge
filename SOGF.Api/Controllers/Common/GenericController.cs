@@ -1,10 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Solution.Api.Contracts;
 using Solution.Application.Contracts.Service;
 
-namespace Solution.Api.Controllers;
+namespace Solution.Api.Controllers.Common;
 
 [ApiController]
 public class GenericController<TEntity, TRequest, TResponse>(
@@ -14,74 +13,48 @@ public class GenericController<TEntity, TRequest, TResponse>(
 
 {
     [HttpPost("[controller]")]
+    [Authorize]
     public async Task<IActionResult> Create(TRequest request)
     {
-        try
-        {
+
             var response = await genericService.CreateAsync(request);
-            return Ok(response);
-        }
-        catch (Exception e)
-        {
-            return BadRequest();
-        }
+            return HandleResponse(response);
+
+
     }
 
     [HttpGet("[controller]")]
+    [Authorize]
     public async Task<IActionResult> GetAll()
     {
-        try
-        {
+        
             var response = await genericService.GetAllAsync();
-            return Ok(response);
-        }
-        catch (Exception e)
-        {
-            return BadRequest();
-        }
+            return HandleResponse(response);
+        
     }
 
     [HttpGet("[controller]/{id}")]    
+    [Authorize]
     public async Task<IActionResult> GetById(long id)
     {
-        try
-        {
             var response = await genericService.GetByIdAsync(id);
-            return Ok(response);
-        }
-        catch (Exception e)
-        {
-            return BadRequest();
-        }
+            return HandleResponse(response);
     }
 
     [HttpPatch("[controller]/{id}")]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Update(TRequest request, long id)
     {
-        try
-        {
             var response = await genericService.UpdateAsync(request, id);
-            return Ok(response);
-        }
-        catch (Exception e)
-        {
-            return BadRequest();
-        }
+            return HandleResponse(response);
     }
 
     [HttpDelete("[controller]/{id}")]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> DeleteById(long id)
     {
-        try
-        {
+        
             var response = await genericService.DeleteAsync(id);
-            return response ? Ok() : BadRequest();
-        }
-        catch (Exception e)
-        {
-            return BadRequest();
-        }
+            return HandleResponse(response);
     }
 }
