@@ -8,6 +8,7 @@ public class User : BaseEntity
     public string Password { get; private set; }
     public List<UserRoles> Roles { get; private set; }
 
+    public string Salt { get; private set; }
     public User()
     {
     }
@@ -17,5 +18,13 @@ public class User : BaseEntity
         Username = username;
         Password = password;
         Roles = roles;
+    }
+
+    public User(string username, string password, List<UserRoles> roles, string salt)
+    {
+        Username = username;
+        Password = password;
+        Roles = roles;
+        Salt = salt;
     }
 }

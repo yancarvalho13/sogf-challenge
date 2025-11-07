@@ -57,7 +57,6 @@ public class UserService(
     
     private List<ValidationFailureResponse> ValidateRequest(ValidationResult validationResult)
     {
-
         return validationResult.IsValid
             ? new List<ValidationFailureResponse>()
             : validationResult.Errors.Select(e =>

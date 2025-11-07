@@ -6,4 +6,5 @@ namespace Solution.Api.Contracts;
 
 public interface INaveController : IGenericController<Nave, NaveRequest, NaveResponse>
 {
+    Task<IActionResult> ResumoNave(long id);
 }

@@ -6,6 +6,7 @@ public class UserRoles : BaseEntity
 {
     public long Id { get; set; }
     public Role Role { get; set; }
+    
 
 
     public UserRoles()

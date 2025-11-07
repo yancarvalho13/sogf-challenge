@@ -13,5 +13,10 @@ public class PilotoController(IPilotoService service)
 : GenericController<Piloto, PilotoRequest, PilotoResponse>(service),
     IPilotoController
 {
-    
+    [HttpGet("resumo-do-piloto/{id}")]
+    public async Task<IActionResult> ResumoPiloto(long id)
+    {
+        var response = await service.ResumoPiloto(id);
+        return HandleResponse(response);
+    }
 }

@@ -5,5 +5,5 @@ namespace Solution.Application.Contracts.Service;
 
 public interface IPilotoService : IGenericService<Piloto, PilotoRequest, PilotoResponse>
 {
-    
+    Task<Result<string>> ResumoPiloto(long id);
 }

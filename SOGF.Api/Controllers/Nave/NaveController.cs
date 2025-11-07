@@ -11,4 +11,11 @@ namespace Solution.Api.Controllers.Nave;
 [Route("api/v1/")]
 public class NaveController(INaveService naveService)
     : GenericController<SOGF.Domain.Model.Nave, NaveRequest, NaveResponse>(naveService), INaveController
-{ }
+{
+    [HttpGet("resumo-da-nave/{id}")]
+    public async Task<IActionResult> ResumoNave(long id)
+    {
+        var response = await naveService.ResumoNave(id);
+        return HandleResponse(response);
+    }
+}
