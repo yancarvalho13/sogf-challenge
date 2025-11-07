@@ -15,9 +15,9 @@ public class RelatorioCombateConfiguration : IEntityTypeConfiguration<RelatorioC
         builder.Property(rc => rc.Id)
             .ValueGeneratedOnAdd();
         builder.Property(rc => rc.DataCriacao)
-            .ValueGeneratedOnAdd();
+            .IsRequired();
         builder.Property(rc => rc.DataAtualizacao)
-            .ValueGeneratedOnAddOrUpdate();
+            .ValueGeneratedOnUpdate();
         
         builder.Property(rc => rc.Data)
             .HasColumnType("date");

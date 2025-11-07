@@ -7,8 +7,9 @@ using Solution.Application.Dto;
 using Solution.Application.Dto.Missao;
 using Solution.Application.Mappers;
 using Solution.Application.Service;
+using Solution.Application.Service.Combate;
 using Solution.Application.Service.Faccao;
-using Solution.Application.Service.MissaoService;
+using Solution.Application.Service.Missao;
 using Solution.Application.Service.Nave;
 using Solution.Application.Service.Piloto;
 using Solution.Application.Service.Tripulante;
@@ -34,6 +35,9 @@ public static class DependencyInjection
         services.AddScoped<IPilotoMapper, PilotoMapper>();
         services.AddScoped<PilotoMapper>();
         services.AddScoped<IPilotoService, PilotoService>();
+        services.AddScoped<IRelatorioCombateMapper, RelatorioCombateMapper>();
+        services.AddScoped<RelatorioCombateMapper>();
+        services.AddScoped<IRelatorioCombateService, RelatorioCombateService>();
         services.AddValidatorsFromAssembly(typeof(MissaoRequest).Assembly, includeInternalTypes: true);
 
         

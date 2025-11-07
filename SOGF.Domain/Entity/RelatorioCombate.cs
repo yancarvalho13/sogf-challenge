@@ -10,6 +10,17 @@ public sealed class RelatorioCombate : BaseEntity
     public long FaccaoVencedoraId { get; private set; }
     
     public List<EngajamentoCombate> NavesEngajadas {get; private set;}
-    
-    
+
+    public RelatorioCombate()
+    {
+        
+    }
+    public RelatorioCombate(DateTime data, ResultadoCombate resultado, string descricaoTatica, long faccaoVencedoraId, List<EngajamentoCombate> navesEngajadas)
+    {
+        Data = data;
+        Resultado = resultado;
+        DescricaoTatica = descricaoTatica;
+        FaccaoVencedoraId = faccaoVencedoraId;
+        NavesEngajadas = navesEngajadas;
+    }
 }

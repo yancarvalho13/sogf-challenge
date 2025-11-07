@@ -5,6 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <RootNamespace>Solution.Api</RootNamespace>
+        <UserSecretsId>210986c8-758d-4dc4-b6d7-5fb098507115</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>

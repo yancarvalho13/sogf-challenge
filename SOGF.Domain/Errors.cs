@@ -17,5 +17,8 @@ public static class Errors
     public static Error MissaoCompletada { get; } =
         new("Missaocompletada", ErrorType.BadRequest, "A missão ja foi concluida");
 
+    public static Error AiModelComunicationFailure { get; } =
+        new("AiModelComunicationFailure", ErrorType.BadRequest, "Falha de comunicação com o AiModel");
+
 
 }

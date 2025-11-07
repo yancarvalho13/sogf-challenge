@@ -1,6 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.Reflection.Metadata;
 using FluentValidation;
 using SOGF.Domain;
 using SOGF.Domain.Model;
@@ -11,7 +8,7 @@ using Solution.Application.Dto;
 using Solution.Application.Dto.Missao;
 using ValidationResult = FluentValidation.Results.ValidationResult;
 
-namespace Solution.Application.Service.MissaoService;
+namespace Solution.Application.Service.Missao;
 
 public class MissaoService : IMissaoService
 {
@@ -102,16 +99,11 @@ public class MissaoService : IMissaoService
                 new ValidationFailureResponse(e.PropertyName, e.ErrorMessage, e.AttemptedValue.ToString())).ToList();
 
     }
-    // TO DO Faça um método auxiliar para verificar pelo tripulanteID se ele está vinculado há uma missão em andamento e retorne um bool
-    private async Task<bool> IsTripulantesInMission(List<Missao> missoes,List<long> tripulantesRequest)
+    private async Task<bool> IsTripulantesInMission(List<SOGF.Domain.Model.Missao> missoes,List<long> tripulantesRequest)
     {
-        var tripulantesId = new List<long>();
-        
-        missoes.ForEach(m => m.GetTripulantesId().ForEach(id => tripulantesId.Add(id)));
-       
-        var response = tripulantesId.Intersect(tripulantesRequest);
-        
-        return response.Any();
+        var tripulantesEncontrados =
+            tripulantesRequest.Where(id => missoes.Any(m => m.GetTripulantesId().Contains(id))).ToList();
+        return tripulantesEncontrados.Count > 0;
 
     }
 }

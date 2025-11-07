@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Solution.Api;
+using Solution.Api.Contracts;
 using Solution.Application.Contracts.Persistence;
 using Solution.Persistence.Contexts;
 using Solution.Persistence.Repositories;
@@ -21,6 +23,8 @@ public static class DependencyInjection
         services.AddScoped<IFaccaoRepository, FaccaoRepository>();
         services.AddScoped<IPilotoRepository, PilotoRepository>();
         services.AddScoped<IRelatorioCombateRepository, RelatorioCombateRepository>();
+        services.AddScoped<ILlMAdapter, GeminiAdapter>();
+
         return services;
     }
 }
