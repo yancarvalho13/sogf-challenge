@@ -1,8 +1,10 @@
+using SOGF.Domain.Entity.Result;
 using Solution.Api.Contracts;
 using Solution.Application.Contracts.Mapping;
 using Solution.Application.Contracts.Persistence;
 using Solution.Application.Contracts.Service;
 using Solution.Application.Dto;
+using Solution.Application.Dto.Faccao;
 using Solution.Application.Mappers;
 using Solution.Application.Validations;
 
@@ -52,4 +54,5 @@ public class NaveService(
 
         return response;
     }
+    
 }

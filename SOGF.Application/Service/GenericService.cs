@@ -1,6 +1,7 @@
 using FluentValidation;
 using FluentValidation.Results;
 using SOGF.Domain;
+using SOGF.Domain.Entity.Result;
 using SOGF.Domain.Model;
 using Solution.Application.Contracts.Mapping;
 using Solution.Application.Contracts.Persistence;
@@ -72,7 +73,19 @@ where TEntity : BaseEntity
         return true;
     }
 
-    
+    public async Task<PagedResult<TResponse>> GetAllByPageAsync(int page, int pageSize)
+    {
+        var totalRecords = await _genericRepository.GetTotalRecords();
+        var totalPages = totalRecords / pageSize;
+        var list = await _genericRepository.GetAllByPageAsync(page, pageSize);
+
+        var responseList = list.Select(x => _mapper.ToDto(x));
+        
+        return new PagedResult<TResponse>(responseList,
+            true, page, responseList.Count(), totalRecords, totalPages);
+    }
+
+
     private List<ValidationFailureResponse> ValidateRequest(ValidationResult validationResult)
     {
 

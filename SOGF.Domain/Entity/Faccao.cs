@@ -17,4 +17,12 @@ public sealed class Faccao : BaseEntity
         StatusDiplomatico = statusDiplomatico;
         NivelAmeaca = nivelAmeaca;
     }
+    
+    public Faccao(string nome, StatusDiplomatico statusDiplomatico, NivelAmeaca nivelAmeaca, List<Nave> naves)
+    {
+        Nome = nome;
+        StatusDiplomatico = statusDiplomatico;
+        NivelAmeaca = nivelAmeaca;
+        Naves = naves;
+    }
 }

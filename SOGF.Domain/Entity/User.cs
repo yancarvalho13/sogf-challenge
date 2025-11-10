@@ -7,8 +7,9 @@ public class User : BaseEntity
     public string Username { get; private set; }
     public string Password { get; private set; }
     public List<UserRoles> Roles { get; private set; }
-
+    
     public string Salt { get; private set; }
+
     public User()
     {
     }

@@ -1,6 +1,7 @@
 using SOGF.Domain.Exception;
+using Solution.Application.Dto;
 
-namespace Solution.Application.Dto.Result;
+namespace SOGF.Domain.Entity.Result;
 
 public record Result
 {
@@ -22,7 +23,6 @@ public record Result
     {
         this.isSuccess = isSuccess;
         Error = error;
-;
     }
 
     public static Result Succes() => new (true, false, []);

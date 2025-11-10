@@ -47,4 +47,11 @@ public class MissaoController : BaseController, IMissaoController
         var response = await _missaoService.BuscarMissao(id);
         return HandleResponse(response);
     }
+
+    [HttpGet("relatorio-inter-galactico")]
+    public async Task<IActionResult> GerarRelatorioIntergalático()
+    {
+        var response = await _missaoService.RelatorioInterGalactico();
+        return HandleResponse(response);
+    }
 }

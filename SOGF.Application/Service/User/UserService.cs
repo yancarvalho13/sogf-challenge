@@ -1,7 +1,9 @@
+using System.Security.Cryptography;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Identity;
 using SOGF.Domain;
+using SOGF.Domain.Entity.Result;
 using Solution.Application.Contracts.Mapping;
 using Solution.Application.Contracts.Persistence;
 using Solution.Application.Contracts.Security;
@@ -21,7 +23,7 @@ public class UserService(
     public async Task<Result<string>> Login(UserLoginRequest request)
     {
         var user = await userRepository.FindByUsername(request.username);
-        var requestPassword = HashPassword(request.password);
+        var requestPassword = HashPassword(request.password, user.Salt);
         if (!requestPassword.Equals(user.Password)) return Errors.InvalidCredentials;
         var token = tokenProvider.GenerateToken(user);
         return token;
@@ -33,18 +35,20 @@ public class UserService(
         var validationErrors =  ValidateRequest(isValid);
         if (validationErrors.Count != 0) return validationErrors;
 
-        var hashPassword = HashPassword(request.password);
+        var salt = GenerateSalt();
+        
+        var hashPassword = HashPassword(request.password, salt);
         var user = new SOGF.Domain.Entity.User(request.username, hashPassword,
-            request.roles.Select(r => new UserRoles(r)).ToList());
+            request.roles.Select(r => new UserRoles(r)).ToList(),salt );
         await userRepository.CreateAsync(user);
 
         return mapper2.ToDto(user);
     }
 
-    private string HashPassword(string passwordRequest)
+    private string HashPassword(string passwordRequest, string salt)
     {
-        byte[] saltBytes = Convert.FromBase64String("");
-        string hash = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+        var saltBytes = Convert.FromBase64String(salt);
+        var hash = Convert.ToBase64String(KeyDerivation.Pbkdf2(
             password: passwordRequest!,
             salt: saltBytes,
             prf: KeyDerivationPrf.HMACSHA256,
@@ -54,7 +58,17 @@ public class UserService(
 
         return hash;
     }
-    
+
+    private string GenerateSalt()
+    {
+        var salt = new byte[128 / 8];
+        using (var rng = RandomNumberGenerator.Create())
+        {
+            rng.GetBytes(salt);
+        }
+
+        return Convert.ToBase64String(salt);
+    }
     private List<ValidationFailureResponse> ValidateRequest(ValidationResult validationResult)
     {
         return validationResult.IsValid

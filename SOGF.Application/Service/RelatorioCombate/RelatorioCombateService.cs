@@ -1,4 +1,5 @@
 using SOGF.Domain.Entity.Enum;
+using SOGF.Domain.Entity.Result;
 using SOGF.Domain.Model;
 using Solution.Api.Contracts;
 using Solution.Application.Contracts.Mapping;

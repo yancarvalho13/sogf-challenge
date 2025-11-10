@@ -16,7 +16,5 @@ public class FaccaoMapper : IMapper<Faccao, FaccaoRequest, FaccaoResponse>, IFac
         new FaccaoResponse(entity.Id,
             entity.Nome,
             entity.StatusDiplomatico,
-            entity.NivelAmeaca,
-            entity.Naves.Select(n =>
-                new NaveResponse(n.Id, n.Nome, n.Classe, n.Status, n.FaccaoId)).ToList());
+            entity.NivelAmeaca);
 }

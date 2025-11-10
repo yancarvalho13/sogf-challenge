@@ -1,10 +1,13 @@
 using FluentValidation;
 using SOGF.Domain;
+using SOGF.Domain.Entity.Result;
 using SOGF.Domain.Model;
+using Solution.Api.Contracts;
 using Solution.Application.Contracts.Mapping;
 using Solution.Application.Contracts.Persistence;
 using Solution.Application.Contracts.Service;
 using Solution.Application.Dto;
+using Solution.Application.Dto.LlmAdapter;
 using Solution.Application.Dto.Missao;
 using Solution.Application.Validations;
 using ValidationResult = FluentValidation.Results.ValidationResult;
@@ -19,8 +22,10 @@ public class MissaoService : IMissaoService
     private readonly ITripulanteRepository _tripulanteRepository;
     private readonly IMissaoMapper _missaoMapper;
     private readonly MissaoRequestValidator _validator;
+    private readonly IRelatorioCombateRepository _relatorioCombateRepository;
+    private readonly ILlMAdapter _llMAdapter;
 
-    public MissaoService(IMissaoRepository missaoRepository, IMissaoMapper missaoMapper, IValidator<MissaoRequest> validator, ITripulanteRepository tripulanteRepository, IPilotoRepository pilotoRepository, INaveRepository naveRepository, MissaoRequestValidator validator1)
+    public MissaoService(IMissaoRepository missaoRepository, IMissaoMapper missaoMapper, IValidator<MissaoRequest> validator, ITripulanteRepository tripulanteRepository, IPilotoRepository pilotoRepository, INaveRepository naveRepository, MissaoRequestValidator validator1, IRelatorioCombateRepository relatorioCombateRepository, ILlMAdapter llMAdapter)
     {
         _missaoRepository = missaoRepository;
         _missaoMapper = missaoMapper;
@@ -28,6 +33,8 @@ public class MissaoService : IMissaoService
         _pilotoRepository = pilotoRepository;
         _naveRepository = naveRepository;
         _validator = validator1;
+        _relatorioCombateRepository = relatorioCombateRepository;
+        _llMAdapter = llMAdapter;
     }
 
     public async Task<Result<MissaoResponse>> IniciarMissao(MissaoRequest request)
@@ -89,6 +96,21 @@ public class MissaoService : IMissaoService
         missaoDb.FinalizarMissao();
         await _missaoRepository.UpdateAsync(missaoDb);
         return _missaoMapper.ToDto(missaoDb);
+    }
+
+    public async Task<Result<string>> RelatorioInterGalactico()
+    {
+        var missoes = await _missaoRepository.GetMissoesEmAndamento();
+        var relatorios = await _relatorioCombateRepository.GetAllAsync();
+
+        var prompt = "Baseado no relatorio de missoes, faça um resumo dos acontecimentos" +
+                     "integalacticos do universo de star wars com ate 600 caracteres, resumos:" +
+                     $"{String.Join(", ", relatorios.Select(r => r.DescricaoTatica))}";
+
+        var response = _llMAdapter.Consult(prompt);
+
+        return response.Result;
+
     }
 
     private List<ValidationFailureResponse> ValidateRequest(ValidationResult validationResult)

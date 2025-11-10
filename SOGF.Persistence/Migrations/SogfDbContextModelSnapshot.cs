@@ -22,6 +22,38 @@ namespace Solution.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("SOGF.Domain.Entity.User", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("DataAtualizacao")
+                        .ValueGeneratedOnUpdate()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Salt")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("usuarios", (string)null);
+                });
+
             modelBuilder.Entity("SOGF.Domain.Model.Faccao", b =>
                 {
                     b.Property<long>("Id")
@@ -235,32 +267,40 @@ namespace Solution.Persistence.Migrations
                     b.ToTable("Tripulantes", (string)null);
                 });
 
-            modelBuilder.Entity("SOGF.Domain.Model.User", b =>
+            modelBuilder.Entity("SOGF.Domain.Entity.User", b =>
                 {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                    b.OwnsMany("SOGF.Domain.UserRoles", "Roles", b1 =>
+                        {
+                            b1.Property<long>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<long>("Id"));
 
-                    b.Property<DateTime>("DataAtualizacao")
-                        .ValueGeneratedOnUpdate()
-                        .HasColumnType("datetime2");
+                            b1.Property<DateTime>("DataAtualizacao")
+                                .ValueGeneratedOnUpdate()
+                                .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("datetime2");
+                            b1.Property<DateTime>("DataCriacao")
+                                .HasColumnType("datetime2");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b1.Property<int>("Role")
+                                .HasColumnType("int");
 
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b1.Property<long>("userId")
+                                .HasColumnType("bigint");
 
-                    b.HasKey("Id");
+                            b1.HasKey("Id");
 
-                    b.ToTable("usuarios", (string)null);
+                            b1.HasIndex("userId");
+
+                            b1.ToTable("usuariosRoles", (string)null);
+
+                            b1.WithOwner()
+                                .HasForeignKey("userId");
+                        });
+
+                    b.Navigation("Roles");
                 });
 
             modelBuilder.Entity("SOGF.Domain.Model.Missao", b =>
@@ -347,42 +387,6 @@ namespace Solution.Persistence.Migrations
                         });
 
                     b.Navigation("NavesEngajadas");
-                });
-
-            modelBuilder.Entity("SOGF.Domain.Model.User", b =>
-                {
-                    b.OwnsMany("SOGF.Domain.UserRoles", "Roles", b1 =>
-                        {
-                            b1.Property<long>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("bigint");
-
-                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<long>("Id"));
-
-                            b1.Property<DateTime>("DataAtualizacao")
-                                .ValueGeneratedOnUpdate()
-                                .HasColumnType("datetime2");
-
-                            b1.Property<DateTime>("DataCriacao")
-                                .HasColumnType("datetime2");
-
-                            b1.Property<int>("Role")
-                                .HasColumnType("int");
-
-                            b1.Property<long>("userId")
-                                .HasColumnType("bigint");
-
-                            b1.HasKey("Id");
-
-                            b1.HasIndex("userId");
-
-                            b1.ToTable("usuariosRoles", (string)null);
-
-                            b1.WithOwner()
-                                .HasForeignKey("userId");
-                        });
-
-                    b.Navigation("Roles");
                 });
 
             modelBuilder.Entity("SOGF.Domain.Model.Faccao", b =>

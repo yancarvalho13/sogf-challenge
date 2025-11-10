@@ -11,4 +11,6 @@ public interface IMissaoController
     Task<IActionResult> BuscarMissoes();
 
     Task<IActionResult> BuscarPorId(long id);
+
+    Task<IActionResult> GerarRelatorioIntergalático();
 }

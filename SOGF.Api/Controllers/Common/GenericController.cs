@@ -60,6 +60,7 @@ public class GenericController<TEntity, TRequest, TResponse>(
 
     
     [HttpGet("[controller]/buscar-pagina/{page}/{pagesize}")]
+    [Authorize]
     public async Task<IActionResult> GetAllByPage(int page, int pagesize)
     {
             var response = await genericService.GetAllByPageAsync(page, pagesize);

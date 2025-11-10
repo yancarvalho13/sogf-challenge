@@ -5,5 +5,4 @@ namespace Solution.Application.Contracts.Mapping;
 
 public interface IFaccaoMapper : IMapper<Faccao, FaccaoRequest, FaccaoResponse>
 {
-    
 }

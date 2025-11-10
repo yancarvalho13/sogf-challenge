@@ -12,6 +12,5 @@ public class TripulanteMapper : IMapper<Tripulante, TripulanteRequest, Tripulant
     public TripulanteResponse ToDto(Tripulante entity) => 
         new TripulanteResponse(entity.Id, entity.Nome, entity.Patente, entity.Especialidade);
 
-    public PilotarNaveResponse ToPilotarNaveDto(Tripulante tripulanteEntity, Nave naveEntity) =>
-        new PilotarNaveResponse(naveEntity.Id, tripulanteEntity.Id, naveEntity.Nome, tripulanteEntity.Nome);
+    
 }

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SOGF.Domain.Entity.Result;
 using Solution.Application.Contracts.Persistence;
 using SOGF.Domain.Model;
 using Solution.Persistence.Contexts;
@@ -45,5 +46,17 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
         _dbSet.Remove(entity);
         await _context.SaveChangesAsync();
+    }
+
+    public async Task<IReadOnlyList<T>> GetAllByPageAsync(int page, int pagesize)
+    {
+      return  await _dbSet.Skip((page - 1) * pagesize)
+            .Take(pagesize)
+            .ToListAsync();
+    }
+
+    public async Task<long> GetTotalRecords()
+    {
+        return await _dbSet.CountAsync();
     }
 }

@@ -29,6 +29,9 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.Password)
             .IsRequired();
 
+        builder.Property(u => u.Salt)
+            .IsRequired();
+        
         builder.OwnsMany(u => u.Roles, owned =>
         {
             owned.ToTable("usuariosRoles");

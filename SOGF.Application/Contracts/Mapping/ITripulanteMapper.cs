@@ -5,5 +5,4 @@ namespace Solution.Application.Contracts.Mapping;
 
 public interface ITripulanteMapper : IMapper<Tripulante, TripulanteRequest, TripulanteResponse>
 {
-    public PilotarNaveResponse ToPilotarNaveDto(Tripulante tripulanteEntity, Nave naveEntity);
 }

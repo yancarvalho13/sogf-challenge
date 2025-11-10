@@ -1,4 +1,5 @@
 using SOGF.Domain.Entity;
+using SOGF.Domain.Entity.Result;
 using SOGF.Domain.Model;
 using Solution.Application.Dto;
 

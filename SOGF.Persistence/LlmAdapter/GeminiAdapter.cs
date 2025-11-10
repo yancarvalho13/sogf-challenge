@@ -4,6 +4,7 @@ using System.Text.Json;
 using Google.GenAI;
 using Microsoft.Extensions.Configuration;
 using SOGF.Domain;
+using SOGF.Domain.Entity.Result;
 using Solution.Api.Contracts;
 using Solution.Application;
 using Solution.Application.Dto;
