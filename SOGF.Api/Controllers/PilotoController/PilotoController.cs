@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SOGF.Domain.Model;
 using Solution.Api.Contracts;
@@ -9,6 +10,7 @@ namespace Solution.Api.Controllers.PilotoController;
 
 [ApiController]
 [Route("api/v1/")]
+[Authorize]
 public class PilotoController(IPilotoService service)
 : GenericController<Piloto, PilotoRequest, PilotoResponse>(service),
     IPilotoController

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Solution.Api.Contracts;
 using Solution.Api.Controllers.Common;
@@ -9,6 +10,7 @@ namespace Solution.Api.Controllers.Nave;
 
 [ApiController]
 [Route("api/v1/")]
+[Authorize]
 public class NaveController(INaveService naveService)
     : GenericController<SOGF.Domain.Model.Nave, NaveRequest, NaveResponse>(naveService), INaveController
 {

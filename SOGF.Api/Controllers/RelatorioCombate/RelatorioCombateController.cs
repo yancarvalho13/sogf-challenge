@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Solution.Application.Contracts.Service;
 
@@ -5,6 +6,7 @@ namespace Solution.Api.Controllers.RelatorioCombate;
 
 [ApiController]
 [Route("api/v1")]
+[Authorize]
 public class RelatorioCombateController : BaseController
 {
 
