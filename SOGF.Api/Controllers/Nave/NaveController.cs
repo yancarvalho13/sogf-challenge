@@ -20,4 +20,6 @@ public class NaveController(INaveService naveService)
         var response = await naveService.ResumoNave(id);
         return HandleResponse(response);
     }
+    
+    
 }

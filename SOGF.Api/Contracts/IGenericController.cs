@@ -10,5 +10,7 @@ public interface IGenericController<TEntity,TRequest, TResponse>
     Task<IActionResult> GetById(long id);
     Task<IActionResult> Update(TRequest request, long id);
     Task<IActionResult> DeleteById(long id);
-    
+
+    Task<IActionResult> GetAllByPage(int page, int pagesize);
+
 }

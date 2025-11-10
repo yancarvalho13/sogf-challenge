@@ -1,8 +1,6 @@
-using FluentValidation.Results;
 using SOGF.Domain.Exception;
-using Solution.Application.Dto;
 
-namespace Solution.Application;
+namespace Solution.Application.Dto.Result;
 
 public record Result
 {

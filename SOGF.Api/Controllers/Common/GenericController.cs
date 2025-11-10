@@ -57,4 +57,12 @@ public class GenericController<TEntity, TRequest, TResponse>(
             var response = await genericService.DeleteAsync(id);
             return HandleResponse(response);
     }
+
+    
+    [HttpGet("[controller]/buscar-pagina/{page}/{pagesize}")]
+    public async Task<IActionResult> GetAllByPage(int page, int pagesize)
+    {
+            var response = await genericService.GetAllByPageAsync(page, pagesize);
+            return Ok(response);
+    }
 }

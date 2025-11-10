@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SOGF.Domain.Entity.Result;
 using SOGF.Domain.Exception;
 using Solution.Application;
 
@@ -29,5 +30,6 @@ public class BaseController : ControllerBase
     {
         return response.isSuccess ? Ok(response) : Problem(response.Error);
     }
+    
     
 }
