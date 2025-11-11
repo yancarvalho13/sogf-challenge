@@ -28,7 +28,7 @@ public class NaveService(
     {var relatorios = await relatorioCombateRepository.GetAllAsync();
 
         var resumo = relatorios
-            .Where(r => r.NavesEngajadas.All(n => n.NaveId == id))
+            .Where(r => r.NavesEngajadas.Any(n => n.NaveId == id))
             .ToList();
 
         var nave = await _naveRepository.GetByIdAsync(id);

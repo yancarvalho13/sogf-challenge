@@ -2,7 +2,16 @@ namespace SOGF.Domain.Model;
 
 public abstract class BaseEntity
 {
-    public long Id { get; }
-    public DateTime DataCriacao { get; } = DateTime.Now;
-    public DateTime DataAtualizacao { get; } =  DateTime.Now;
+    public long Id { get;  set; }
+    public DateTime DataCriacao { get; } 
+    public DateTime DataAtualizacao { get; } 
+
+    protected BaseEntity(long id)
+    {
+        Id = id;
+    }
+
+    protected BaseEntity()
+    {
+    }
 }

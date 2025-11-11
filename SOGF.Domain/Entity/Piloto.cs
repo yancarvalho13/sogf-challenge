@@ -12,4 +12,11 @@ public class Piloto : BaseEntity
         Nome = nome;
         Patente = patente;
     }
+    
+    public Piloto(long id,string nome, Patente patente) : base(id)
+    {
+        Id = id;
+        Nome = nome;
+        Patente = patente;
+    }
 }

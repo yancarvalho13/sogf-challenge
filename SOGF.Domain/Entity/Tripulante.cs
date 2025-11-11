@@ -11,5 +11,12 @@ public class Tripulante : BaseEntity
         Patente = patente;
         Especialidade = especialidade;
     }
+    public Tripulante(long id,string nome, Patente patente, Especialidade especialidade) : base(id)
+    {
+        Id = id;
+        Nome = nome;
+        Patente = patente;
+        Especialidade = especialidade;
+    }
     
 }

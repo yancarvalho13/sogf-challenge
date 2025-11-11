@@ -23,6 +23,16 @@ public sealed class Nave : BaseEntity
         Status = status;
         FaccaoId = faccaoId;
     }
+    
+    public Nave(long id,string nome, TipoNave classe, long capacidadeTripulacao, StatusOperacional status, long faccaoId) : base(id)
+    {
+        Id = id;
+        Nome = nome;
+        Classe = classe;
+        CapacidadeTripulacao = capacidadeTripulacao;
+        Status = status;
+        FaccaoId = faccaoId;
+    }
 
     public long PilotId()
     {

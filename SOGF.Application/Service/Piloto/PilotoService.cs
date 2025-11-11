@@ -20,7 +20,7 @@ public class PilotoService(IPilotoRepository repository,
     {
         var relatorios = await relatorioCombateRepository.GetAllAsync();
         var resumo = relatorios.Where(r
-            => r.NavesEngajadas.All(n => n.PilotoId == id)).ToList();
+            => r.NavesEngajadas.Any(n => n.PilotoId == id)).ToList();
         
         var baseText = string.Join("\n- ", resumo
             .Where(r => !string.IsNullOrWhiteSpace(r.DescricaoTatica))

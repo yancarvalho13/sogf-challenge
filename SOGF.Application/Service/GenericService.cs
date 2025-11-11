@@ -75,6 +75,8 @@ where TEntity : BaseEntity
 
     public async Task<PagedResult<TResponse>> GetAllByPageAsync(int page, int pageSize)
     {
+
+        if (page == 0) page = 1;
         var totalRecords = await _genericRepository.GetTotalRecords();
         var totalPages = totalRecords / pageSize;
         var list = await _genericRepository.GetAllByPageAsync(page, pageSize);

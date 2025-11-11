@@ -16,9 +16,9 @@ public class MissaoConfiguration : IEntityTypeConfiguration<Missao>
         builder.Property(mss => mss.Id)
             .ValueGeneratedOnAdd();
         builder.Property(mss => mss.DataCriacao)
-            .ValueGeneratedOnAdd();
+            .ValueGeneratedOnAdd().HasDefaultValueSql("getDate()");
         builder.Property(mss => mss.DataAtualizacao)
-            .ValueGeneratedOnUpdate();
+            .ValueGeneratedOnUpdate().HasDefaultValueSql("getDate()");
 
         builder.Property(mss => mss.ObjetivoMissao)
             .IsRequired();
@@ -52,6 +52,7 @@ public class MissaoConfiguration : IEntityTypeConfiguration<Missao>
             owned.HasIndex("MissaoId", nameof(MissaoTripulantes.TripulanteId))
                 .IsUnique();
         });
+
 
     }
 }

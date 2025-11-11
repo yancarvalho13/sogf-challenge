@@ -24,7 +24,7 @@ public static class DenpendencyInjection
         {
             options.AddDocumentTransformer((document, context, cancellationToken) =>
             {
-                document.Components ??= new();
+                document.Components ??= new OpenApiComponents();
                 document.Components.SecuritySchemes = new Dictionary<string, OpenApiSecurityScheme>
                 {
                     [JwtBearerDefaults.AuthenticationScheme] = new()

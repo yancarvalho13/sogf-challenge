@@ -18,11 +18,7 @@ public class PagedResult<T>
         TotalRecords = totalRecords;
         TotalPages = totalPages;
     }
-
-    public PagedResult()
-    {
-    }
-
+    
     public static PagedResult<T> EmptyResult() => new (new List<T>(),
         true,
         0,
