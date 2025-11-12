@@ -17,6 +17,7 @@ public class NaveMapper : IMapper<Nave, NaveRequest, NaveResponse>,INaveMapper
     public NaveResponse ToDto(Nave entity) =>  new NaveResponse(entity.Id,
         entity.Nome,
         entity.Classe,
+        entity.CapacidadeTripulacao,
         entity.Status,
         entity.FaccaoId);
     

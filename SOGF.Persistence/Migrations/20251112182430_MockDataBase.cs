@@ -213,14 +213,14 @@ namespace Solution.Persistence.Migrations
                 columns: new[] { "Id", "NivelAmeaca", "Nome", "StatusDiplomatico" },
                 values: new object[,]
                 {
-                    { -8L, "Alto", "Sindicatos Hutt", "Neutro" },
-                    { -7L, "Medio", "Clãs Mandalorianos", "Neutro" },
-                    { -6L, "Medio", "Guilda de Caçadores", "Neutro" },
-                    { -5L, "Medio", "Resistência", "Pacifico" },
-                    { -4L, "Alto", "Primeira Ordem", "Agressivo" },
-                    { -3L, "Baixo", "Nova República", "Pacifico" },
-                    { -2L, "Alto", "Aliança Rebelde", "Pacifico" },
-                    { -1L, "Alto", "Império Galáctico", "Agressivo" }
+                    { 1L, "Alto", "Império Galáctico", "Agressivo" },
+                    { 2L, "Alto", "Aliança Rebelde", "Pacifico" },
+                    { 3L, "Baixo", "Nova República", "Pacifico" },
+                    { 4L, "Alto", "Primeira Ordem", "Agressivo" },
+                    { 5L, "Medio", "Resistência", "Pacifico" },
+                    { 6L, "Medio", "Guilda de Caçadores", "Neutro" },
+                    { 7L, "Medio", "Clãs Mandalorianos", "Neutro" },
+                    { 8L, "Alto", "Sindicatos Hutt", "Neutro" }
                 });
 
             migrationBuilder.InsertData(
@@ -228,18 +228,18 @@ namespace Solution.Persistence.Migrations
                 columns: new[] { "Id", "Nome", "Patente" },
                 values: new object[,]
                 {
-                    { -12L, "Garven Dreis", "Capitao" },
-                    { -11L, "Wes Janson", "Tenente" },
-                    { -10L, "Tycho Celchu", "Tenente" },
-                    { -9L, "Jyn Erso", "Tenente" },
-                    { -8L, "Cassian Andor", "Capitao" },
-                    { -7L, "Leia Organa", "Capitao" },
-                    { -6L, "Han Solo", "Tenente" },
-                    { -5L, "Jek Porkins", "Tenente" },
-                    { -4L, "Biggs Darklighter", "Tenente" },
-                    { -3L, "Poe Dameron", "Capitao" },
-                    { -2L, "Wedge Antilles", "Tenente" },
-                    { -1L, "Luke Skywalker", "Capitao" }
+                    { 1L, "Luke Skywalker", "Capitao" },
+                    { 2L, "Wedge Antilles", "Tenente" },
+                    { 3L, "Poe Dameron", "Capitao" },
+                    { 4L, "Biggs Darklighter", "Tenente" },
+                    { 5L, "Jek Porkins", "Tenente" },
+                    { 6L, "Han Solo", "Tenente" },
+                    { 7L, "Leia Organa", "Capitao" },
+                    { 8L, "Cassian Andor", "Capitao" },
+                    { 9L, "Jyn Erso", "Tenente" },
+                    { 10L, "Tycho Celchu", "Tenente" },
+                    { 11L, "Wes Janson", "Tenente" },
+                    { 12L, "Garven Dreis", "Capitao" }
                 });
 
             migrationBuilder.InsertData(
@@ -247,25 +247,25 @@ namespace Solution.Persistence.Migrations
                 columns: new[] { "Id", "Especialidade", "Nome", "Patente" },
                 values: new object[,]
                 {
-                    { -19L, "Batalha", "Hera Syndulla", "Capitao" },
-                    { -18L, "Engenharia", "Sabine Wren", "Tenente" },
-                    { -17L, "Medicina", "Jyn Erso", "Tenente" },
-                    { -16L, "Medicina", "Cassian Andor", "Capitao" },
-                    { -15L, "Engenharia", "Bodhi Rook", "Tenente" },
-                    { -14L, "Engenharia", "Nien Nunb", "Tenente" },
-                    { -13L, "Batalha", "Lando Calrissian", "Capitao" },
-                    { -12L, "Engenharia", "Dak Ralter", "Cadete" },
-                    { -11L, "Batalha", "Jek Porkins", "Tenente" },
-                    { -10L, "Medicina", "Biggs Darklighter", "Tenente" },
-                    { -9L, "Engenharia", "Rose Tico", "Cadete" },
-                    { -8L, "Batalha", "Rey", "Tenente" },
-                    { -7L, "Medicina", "Finn", "Cadete" },
-                    { -6L, "Estrategista", "Poe Dameron", "Capitao" },
-                    { -5L, "Engenharia", "Han Solo", "Tenente" },
-                    { -4L, "Batalha", "Leia Organa", "Capitao" },
-                    { -3L, "Engenharia", "Chewbacca", "Tenente" },
-                    { -2L, "Medicina", "Wedge Antilles", "Tenente" },
-                    { -1L, "Estrategista", "Luke Skywalker", "Capitao" }
+                    { 1L, "Estrategista", "Luke Skywalker", "Capitao" },
+                    { 2L, "Medicina", "Wedge Antilles", "Tenente" },
+                    { 3L, "Engenharia", "Chewbacca", "Tenente" },
+                    { 4L, "Batalha", "Leia Organa", "Capitao" },
+                    { 5L, "Engenharia", "Han Solo", "Tenente" },
+                    { 6L, "Estrategista", "Poe Dameron", "Capitao" },
+                    { 7L, "Medicina", "Finn", "Cadete" },
+                    { 8L, "Batalha", "Rey", "Tenente" },
+                    { 9L, "Engenharia", "Rose Tico", "Cadete" },
+                    { 10L, "Medicina", "Biggs Darklighter", "Tenente" },
+                    { 11L, "Batalha", "Jek Porkins", "Tenente" },
+                    { 12L, "Engenharia", "Dak Ralter", "Cadete" },
+                    { 13L, "Batalha", "Lando Calrissian", "Capitao" },
+                    { 14L, "Engenharia", "Nien Nunb", "Tenente" },
+                    { 15L, "Engenharia", "Bodhi Rook", "Tenente" },
+                    { 16L, "Medicina", "Cassian Andor", "Capitao" },
+                    { 17L, "Medicina", "Jyn Erso", "Tenente" },
+                    { 18L, "Engenharia", "Sabine Wren", "Tenente" },
+                    { 19L, "Batalha", "Hera Syndulla", "Capitao" }
                 });
 
             migrationBuilder.InsertData(
@@ -273,19 +273,19 @@ namespace Solution.Persistence.Migrations
                 columns: new[] { "Id", "CapacidadeTripulacao", "Classe", "FaccaoId", "Nome", "Status" },
                 values: new object[,]
                 {
-                    { -13L, 90L, "Utilitario", -8L, "Khetanna", "Pronta" },
-                    { -12L, 1L, "Patrulha", -7L, "Gauntlet Fighter", "Pronta" },
-                    { -11L, 1L, "Utilitario", -6L, "Slave I", "Pronta" },
-                    { -10L, 60000L, "CruzadorDeBatalha", -2L, "Finalizer (SD FO)", "EmReparo" },
-                    { -9L, 1L, "Patrulha", -4L, "TIE Squadron", "Pronta" },
-                    { -8L, 28000L, "CruzadorDeBatalha", -2L, "Interdictor", "Pronta" },
-                    { -7L, 37000L, "CruzadorDeBatalha", -6L, "Devastator (ISD)", "Pronta" },
-                    { -6L, 2L, "Patrulha", -1L, "Gold Leader (Y-Wing)", "EmReparo" },
-                    { -5L, 1L, "Patrulha", -2L, "Red Five (X-Wing)", "Pronta" },
-                    { -4L, 6L, "Utilitario", -5L, "Ghost", "Pronta" },
-                    { -3L, 6L, "Utilitario", -4L, "Millennium Falcon", "Pronta" },
-                    { -2L, 5200L, "CruzadorDeBatalha", -2L, "Liberty (MC80)", "Pronta" },
-                    { -1L, 5400L, "CruzadorDeBatalha", -1L, "Home One", "Pronta" }
+                    { 1L, 5400L, "CruzadorDeBatalha", 1L, "Home One", "Pronta" },
+                    { 2L, 5200L, "CruzadorDeBatalha", 2L, "Liberty (MC80)", "Pronta" },
+                    { 3L, 6L, "Utilitario", 4L, "Millennium Falcon", "Pronta" },
+                    { 4L, 6L, "Utilitario", 5L, "Ghost", "Pronta" },
+                    { 5L, 1L, "Patrulha", 2L, "Red Five (X-Wing)", "Pronta" },
+                    { 6L, 2L, "Patrulha", 1L, "Gold Leader (Y-Wing)", "EmReparo" },
+                    { 7L, 37000L, "CruzadorDeBatalha", 6L, "Devastator (ISD)", "Pronta" },
+                    { 8L, 28000L, "CruzadorDeBatalha", 2L, "Interdictor", "Pronta" },
+                    { 9L, 1L, "Patrulha", 4L, "TIE Squadron", "Pronta" },
+                    { 10L, 60000L, "CruzadorDeBatalha", 2L, "Finalizer (SD FO)", "EmReparo" },
+                    { 11L, 1L, "Utilitario", 6L, "Slave I", "Pronta" },
+                    { 12L, 1L, "Patrulha", 7L, "Gauntlet Fighter", "Pronta" },
+                    { 13L, 90L, "Utilitario", 8L, "Khetanna", "Pronta" }
                 });
 
             migrationBuilder.CreateIndex(

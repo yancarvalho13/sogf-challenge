@@ -7,6 +7,7 @@ public interface IRelatorioCombateService
 {
     Task<Result<RelatorioCombateResponse>> IniciarCombate();
 
+    Task<Result<IEnumerable<RelatorioCombateResponse>>> GetAllAsync();
     Task<Result<HistoricoCombateResponse>> BuscarRelatorioPiloto(long id);
     Task<Result<HistoricoCombateResponse>> BuscarRelatorioFaccao(long id);
 

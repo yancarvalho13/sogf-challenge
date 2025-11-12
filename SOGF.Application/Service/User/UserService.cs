@@ -23,6 +23,7 @@ public class UserService(
     public async Task<Result<string>> Login(UserLoginRequest request)
     {
         var user = await userRepository.FindByUsername(request.username);
+        if (user is null) return Errors.InvalidCredentials;
         var requestPassword = HashPassword(request.password, user.Salt);
         if (!requestPassword.Equals(user.Password)) return Errors.InvalidCredentials;
         var token = tokenProvider.GenerateToken(user);

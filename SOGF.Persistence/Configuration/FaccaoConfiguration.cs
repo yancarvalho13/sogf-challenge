@@ -33,14 +33,14 @@ public class FaccaoConfiguration : IEntityTypeConfiguration<Faccao>
             .HasConversion<string>()
             .IsRequired();
         
-        builder.HasData( new Faccao(-1,"Império Galáctico", StatusDiplomatico.Agressivo, NivelAmeaca.Alto),
-            new Faccao(-2, "Aliança Rebelde", StatusDiplomatico.Pacifico, NivelAmeaca.Alto),
-            new Faccao(-3, "Nova República",      StatusDiplomatico.Pacifico, NivelAmeaca.Baixo),
-            new Faccao(-4, "Primeira Ordem",      StatusDiplomatico.Agressivo, NivelAmeaca.Alto),
-            new Faccao(-5, "Resistência",         StatusDiplomatico.Pacifico, NivelAmeaca.Medio),
-            new Faccao(-6, "Guilda de Caçadores", StatusDiplomatico.Neutro, NivelAmeaca.Medio),
-            new Faccao(-7, "Clãs Mandalorianos",  StatusDiplomatico.Neutro, NivelAmeaca.Medio),
-            new Faccao(-8, "Sindicatos Hutt",     StatusDiplomatico.Neutro, NivelAmeaca.Alto));
+        builder.HasData( new Faccao(1,"Império Galáctico", StatusDiplomatico.Agressivo, NivelAmeaca.Alto),
+            new Faccao(2, "Aliança Rebelde", StatusDiplomatico.Pacifico, NivelAmeaca.Alto),
+            new Faccao(3, "Nova República",      StatusDiplomatico.Pacifico, NivelAmeaca.Baixo),
+            new Faccao(4, "Primeira Ordem",      StatusDiplomatico.Agressivo, NivelAmeaca.Alto),
+            new Faccao(5, "Resistência",         StatusDiplomatico.Pacifico, NivelAmeaca.Medio),
+            new Faccao(6, "Guilda de Caçadores", StatusDiplomatico.Neutro, NivelAmeaca.Medio),
+            new Faccao(7, "Clãs Mandalorianos",  StatusDiplomatico.Neutro, NivelAmeaca.Medio),
+            new Faccao(8, "Sindicatos Hutt",     StatusDiplomatico.Neutro, NivelAmeaca.Alto));
         
         
     }

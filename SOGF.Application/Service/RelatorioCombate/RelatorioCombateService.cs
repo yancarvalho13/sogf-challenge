@@ -84,6 +84,17 @@ public class RelatorioCombateService : IRelatorioCombateService
         return _mapper.ToDto(relatorio);    
     }
 
+    public async Task<Result<IEnumerable<RelatorioCombateResponse>>> GetAllAsync()
+    {
+        var relatorios = await _repository.GetAllAsync();
+
+        var response = relatorios
+            .Select(x => _mapper.ToDto(x))
+            .ToList();
+
+        return response;
+    }
+
     public async Task<Result<HistoricoCombateResponse>> BuscarRelatorioPiloto(long id)
     {
         

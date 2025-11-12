@@ -24,6 +24,13 @@ public class RelatorioCombateController : BaseController
         return HandleResponse(response);
     }
 
+    [HttpGet("relatorio-combate")]
+    public async Task<IActionResult> BuscarRelatorios()
+    {
+        var response = await _service.GetAllAsync();
+        return HandleResponse(response);
+    }
+
     [HttpGet("relatorio-piloto/{id}")]
     public async Task<IActionResult> BuscarRelatorioPiloto(long id)
     {

@@ -59,8 +59,13 @@ where TEntity : BaseEntity
         var isValid = await _validator.ValidateAsync(request);
         var validationErrors =  ValidateRequest(isValid);
         if (validationErrors.Count != 0) return validationErrors;
+
+        var entitieDb = await _genericRepository.GetByIdAsync(id);
+        if (entitieDb is null) return Errors.RecurseNotFound;
+        
         
         var entitie = _mapper.ToEntity(request);
+        entitie.Id = id;
         await _genericRepository.UpdateAsync(entitie);
         return _mapper.ToDto(entitie);
     }

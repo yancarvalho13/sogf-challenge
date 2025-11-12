@@ -92,7 +92,7 @@ namespace Solution.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = -1L,
+                            Id = 1L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NivelAmeaca = "Alto",
@@ -101,7 +101,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -2L,
+                            Id = 2L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NivelAmeaca = "Alto",
@@ -110,7 +110,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -3L,
+                            Id = 3L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NivelAmeaca = "Baixo",
@@ -119,7 +119,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -4L,
+                            Id = 4L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NivelAmeaca = "Alto",
@@ -128,7 +128,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -5L,
+                            Id = 5L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NivelAmeaca = "Medio",
@@ -137,7 +137,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -6L,
+                            Id = 6L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NivelAmeaca = "Medio",
@@ -146,7 +146,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -7L,
+                            Id = 7L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NivelAmeaca = "Medio",
@@ -155,7 +155,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -8L,
+                            Id = 8L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NivelAmeaca = "Alto",
@@ -248,144 +248,144 @@ namespace Solution.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = -1L,
+                            Id = 1L,
                             CapacidadeTripulacao = 5400L,
                             Classe = "CruzadorDeBatalha",
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FaccaoId = -1L,
+                            FaccaoId = 1L,
                             Nome = "Home One",
                             Status = "Pronta"
                         },
                         new
                         {
-                            Id = -2L,
+                            Id = 2L,
                             CapacidadeTripulacao = 5200L,
                             Classe = "CruzadorDeBatalha",
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FaccaoId = -2L,
+                            FaccaoId = 2L,
                             Nome = "Liberty (MC80)",
                             Status = "Pronta"
                         },
                         new
                         {
-                            Id = -3L,
+                            Id = 3L,
                             CapacidadeTripulacao = 6L,
                             Classe = "Utilitario",
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FaccaoId = -4L,
+                            FaccaoId = 4L,
                             Nome = "Millennium Falcon",
                             Status = "Pronta"
                         },
                         new
                         {
-                            Id = -4L,
+                            Id = 4L,
                             CapacidadeTripulacao = 6L,
                             Classe = "Utilitario",
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FaccaoId = -5L,
+                            FaccaoId = 5L,
                             Nome = "Ghost",
                             Status = "Pronta"
                         },
                         new
                         {
-                            Id = -5L,
+                            Id = 5L,
                             CapacidadeTripulacao = 1L,
                             Classe = "Patrulha",
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FaccaoId = -2L,
+                            FaccaoId = 2L,
                             Nome = "Red Five (X-Wing)",
                             Status = "Pronta"
                         },
                         new
                         {
-                            Id = -6L,
+                            Id = 6L,
                             CapacidadeTripulacao = 2L,
                             Classe = "Patrulha",
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FaccaoId = -1L,
+                            FaccaoId = 1L,
                             Nome = "Gold Leader (Y-Wing)",
                             Status = "EmReparo"
                         },
                         new
                         {
-                            Id = -7L,
+                            Id = 7L,
                             CapacidadeTripulacao = 37000L,
                             Classe = "CruzadorDeBatalha",
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FaccaoId = -6L,
+                            FaccaoId = 6L,
                             Nome = "Devastator (ISD)",
                             Status = "Pronta"
                         },
                         new
                         {
-                            Id = -8L,
+                            Id = 8L,
                             CapacidadeTripulacao = 28000L,
                             Classe = "CruzadorDeBatalha",
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FaccaoId = -2L,
+                            FaccaoId = 2L,
                             Nome = "Interdictor",
                             Status = "Pronta"
                         },
                         new
                         {
-                            Id = -9L,
+                            Id = 9L,
                             CapacidadeTripulacao = 1L,
                             Classe = "Patrulha",
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FaccaoId = -4L,
+                            FaccaoId = 4L,
                             Nome = "TIE Squadron",
                             Status = "Pronta"
                         },
                         new
                         {
-                            Id = -10L,
+                            Id = 10L,
                             CapacidadeTripulacao = 60000L,
                             Classe = "CruzadorDeBatalha",
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FaccaoId = -2L,
+                            FaccaoId = 2L,
                             Nome = "Finalizer (SD FO)",
                             Status = "EmReparo"
                         },
                         new
                         {
-                            Id = -11L,
+                            Id = 11L,
                             CapacidadeTripulacao = 1L,
                             Classe = "Utilitario",
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FaccaoId = -6L,
+                            FaccaoId = 6L,
                             Nome = "Slave I",
                             Status = "Pronta"
                         },
                         new
                         {
-                            Id = -12L,
+                            Id = 12L,
                             CapacidadeTripulacao = 1L,
                             Classe = "Patrulha",
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FaccaoId = -7L,
+                            FaccaoId = 7L,
                             Nome = "Gauntlet Fighter",
                             Status = "Pronta"
                         },
                         new
                         {
-                            Id = -13L,
+                            Id = 13L,
                             CapacidadeTripulacao = 90L,
                             Classe = "Utilitario",
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FaccaoId = -8L,
+                            FaccaoId = 8L,
                             Nome = "Khetanna",
                             Status = "Pronta"
                         });
@@ -425,7 +425,7 @@ namespace Solution.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = -1L,
+                            Id = 1L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nome = "Luke Skywalker",
@@ -433,7 +433,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -2L,
+                            Id = 2L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nome = "Wedge Antilles",
@@ -441,7 +441,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -3L,
+                            Id = 3L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nome = "Poe Dameron",
@@ -449,7 +449,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -4L,
+                            Id = 4L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nome = "Biggs Darklighter",
@@ -457,7 +457,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -5L,
+                            Id = 5L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nome = "Jek Porkins",
@@ -465,7 +465,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -6L,
+                            Id = 6L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nome = "Han Solo",
@@ -473,7 +473,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -7L,
+                            Id = 7L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nome = "Leia Organa",
@@ -481,7 +481,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -8L,
+                            Id = 8L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nome = "Cassian Andor",
@@ -489,7 +489,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -9L,
+                            Id = 9L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nome = "Jyn Erso",
@@ -497,7 +497,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -10L,
+                            Id = 10L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nome = "Tycho Celchu",
@@ -505,7 +505,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -11L,
+                            Id = 11L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nome = "Wes Janson",
@@ -513,7 +513,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -12L,
+                            Id = 12L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nome = "Garven Dreis",
@@ -594,7 +594,7 @@ namespace Solution.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = -1L,
+                            Id = 1L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Especialidade = "Estrategista",
@@ -603,7 +603,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -2L,
+                            Id = 2L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Especialidade = "Medicina",
@@ -612,7 +612,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -3L,
+                            Id = 3L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Especialidade = "Engenharia",
@@ -621,7 +621,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -4L,
+                            Id = 4L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Especialidade = "Batalha",
@@ -630,7 +630,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -5L,
+                            Id = 5L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Especialidade = "Engenharia",
@@ -639,7 +639,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -6L,
+                            Id = 6L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Especialidade = "Estrategista",
@@ -648,7 +648,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -7L,
+                            Id = 7L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Especialidade = "Medicina",
@@ -657,7 +657,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -8L,
+                            Id = 8L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Especialidade = "Batalha",
@@ -666,7 +666,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -9L,
+                            Id = 9L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Especialidade = "Engenharia",
@@ -675,7 +675,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -10L,
+                            Id = 10L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Especialidade = "Medicina",
@@ -684,7 +684,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -11L,
+                            Id = 11L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Especialidade = "Batalha",
@@ -693,7 +693,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -12L,
+                            Id = 12L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Especialidade = "Engenharia",
@@ -702,7 +702,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -13L,
+                            Id = 13L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Especialidade = "Batalha",
@@ -711,7 +711,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -14L,
+                            Id = 14L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Especialidade = "Engenharia",
@@ -720,7 +720,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -15L,
+                            Id = 15L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Especialidade = "Engenharia",
@@ -729,7 +729,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -16L,
+                            Id = 16L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Especialidade = "Medicina",
@@ -738,7 +738,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -17L,
+                            Id = 17L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Especialidade = "Medicina",
@@ -747,7 +747,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -18L,
+                            Id = 18L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Especialidade = "Engenharia",
@@ -756,7 +756,7 @@ namespace Solution.Persistence.Migrations
                         },
                         new
                         {
-                            Id = -19L,
+                            Id = 19L,
                             DataAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Especialidade = "Batalha",
