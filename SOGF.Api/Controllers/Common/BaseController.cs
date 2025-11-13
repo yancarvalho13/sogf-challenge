@@ -1,7 +1,9 @@
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using SOGF.Domain.Entity.Result;
 using SOGF.Domain.Exception;
 using Solution.Application;
+using Solution.Application.Dto;
 
 namespace Solution.Api;
 
@@ -26,8 +28,18 @@ public class BaseController : ControllerBase
         );
     }
 
+    protected IActionResult Problem(List<ValidationFailureResponse> validationFailures)
+    {
+      
+
+        return Problem(
+            statusCode: StatusCodes.Status400BadRequest,
+            title: $@"{string.Join(".",validationFailures.Select(v => v.errorMessage))}"
+        );
+    }
     protected IActionResult HandleResponse(Result response)
     {
+        if (response.ValidationFailures != null ) return Problem(response.ValidationFailures);
         return response.isSuccess ? Ok(response) : Problem(response.Error);
     }
     
