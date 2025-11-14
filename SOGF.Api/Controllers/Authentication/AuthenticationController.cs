@@ -1,11 +1,8 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SOGF.Domain.Model;
-using Solution.Application.Contracts.Security;
 using Solution.Application.Contracts.Service;
 using Solution.Application.Dto;
 
-namespace Solution.Api.Controllers;
+namespace Solution.Api.Controllers.Authentication;
 
 [ApiController]
 [Route("api/v1")]

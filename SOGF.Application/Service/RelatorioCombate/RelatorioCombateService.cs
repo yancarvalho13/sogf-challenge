@@ -1,7 +1,7 @@
 using SOGF.Domain.Entity.Enum;
-using SOGF.Domain.Entity.Result;
 using SOGF.Domain.Model;
-using Solution.Api.Contracts;
+using SOGF.Shared.Result;
+using Solution.Application.Contracts.Adapters;
 using Solution.Application.Contracts.Mapping;
 using Solution.Application.Contracts.Persistence;
 using Solution.Application.Contracts.Service;

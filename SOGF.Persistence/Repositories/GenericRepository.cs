@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using SOGF.Domain.Entity.Result;
 using Solution.Application.Contracts.Persistence;
 using SOGF.Domain.Model;
 using Solution.Persistence.Contexts;

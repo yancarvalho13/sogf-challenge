@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Solution.Api;
-using Solution.Api.Contracts;
+using Solution.Application.Contracts.Adapters;
 using Solution.Application.Contracts.Persistence;
 using Solution.Persistence.Contexts;
+using Solution.Persistence.LlmAdapter;
 using Solution.Persistence.Repositories;
 
 

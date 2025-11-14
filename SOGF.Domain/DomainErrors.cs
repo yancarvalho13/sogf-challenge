@@ -1,8 +1,9 @@
-using SOGF.Domain.Exception;
+
+using SOGF.Shared.Exception;
 
 namespace SOGF.Domain;
 
-public static class Errors
+public static class DomainErrors
 {
     public static Error NaveNotFound { get; } = new("NaveNotFound", ErrorType.NotFound, "Nave não enontrada.");
     

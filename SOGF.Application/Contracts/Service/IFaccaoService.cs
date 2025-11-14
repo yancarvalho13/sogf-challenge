@@ -1,4 +1,3 @@
-using SOGF.Domain.Entity.Result;
 using SOGF.Domain.Model;
 using Solution.Application.Dto.Faccao;
 

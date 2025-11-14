@@ -1,4 +1,4 @@
-namespace SOGF.Domain.Exception;
+namespace SOGF.Shared.Exception;
 
 public enum ErrorType
 {

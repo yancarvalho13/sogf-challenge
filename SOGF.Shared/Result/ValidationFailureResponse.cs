@@ -1,3 +1,3 @@
-namespace Solution.Application.Dto;
+namespace SOGF.Shared.Result;
 
 public record ValidationFailureResponse(string? propertyName, string? errorMessage, string? attemptedValue);

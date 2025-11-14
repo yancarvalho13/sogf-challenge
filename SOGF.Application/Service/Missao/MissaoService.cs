@@ -1,8 +1,8 @@
 using FluentValidation;
 using SOGF.Domain;
-using SOGF.Domain.Entity.Result;
 using SOGF.Domain.Model;
-using Solution.Api.Contracts;
+using SOGF.Shared.Result;
+using Solution.Application.Contracts.Adapters;
 using Solution.Application.Contracts.Mapping;
 using Solution.Application.Contracts.Persistence;
 using Solution.Application.Contracts.Service;
@@ -52,13 +52,13 @@ public class MissaoService : IMissaoService
             => m.NaveId == request.naveId);
         
         
-        if (naveInMissao != null) return Errors.NaveInMission;
+        if (naveInMissao != null) return DomainErrors.NaveInMission;
 
         
-        if (pilotoInMissao != null) return Errors.PilotoInMission;
+        if (pilotoInMissao != null) return DomainErrors.PilotoInMission;
 
 
-        if (IsTripulantesInMission(missoesDb,request.tripulantesId).Result) return Errors.TripulanteInMission;
+        if (IsTripulantesInMission(missoesDb,request.tripulantesId).Result) return DomainErrors.TripulanteInMission;
 
         
         var entity = _missaoMapper.ToEntity(request);
@@ -83,7 +83,7 @@ public class MissaoService : IMissaoService
     public async Task<Result<MissaoResponse>> BuscarMissao(long id)
     {
         var missaoDb = await _missaoRepository.GetByIdAsync(id);
-        if (missaoDb is null) return Errors.MissaoNotFound;
+        if (missaoDb is null) return DomainErrors.MissaoNotFound;
         return _missaoMapper.ToDto(missaoDb);
     }
 
@@ -91,8 +91,8 @@ public class MissaoService : IMissaoService
     public async Task<Result<MissaoResponse>> FinalizaMissao(long id)
     {
         var missaoDb = await _missaoRepository.GetByIdAsync(id);
-        if (missaoDb is null ) return Errors.MissaoNotFound;
-        if (missaoDb.StatusMissao == StatusMissao.Completada) return Errors.MissaoCompletada;
+        if (missaoDb is null ) return DomainErrors.MissaoNotFound;
+        if (missaoDb.StatusMissao == StatusMissao.Completada) return DomainErrors.MissaoCompletada;
         missaoDb.FinalizarMissao();
         await _missaoRepository.UpdateAsync(missaoDb);
         return _missaoMapper.ToDto(missaoDb);

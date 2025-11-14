@@ -1,4 +1,4 @@
-namespace SOGF.Domain.Entity.Result;
+namespace SOGF.Shared.Result;
 
 public class PagedResult<T>
 {

@@ -1,15 +1,10 @@
-using System.Net.Http.Json;
-using System.Text;
-using System.Text.Json;
 using Google.GenAI;
 using Microsoft.Extensions.Configuration;
 using SOGF.Domain;
-using SOGF.Domain.Entity.Result;
-using Solution.Api.Contracts;
-using Solution.Application;
-using Solution.Application.Dto;
+using SOGF.Shared.Result;
+using Solution.Application.Contracts.Adapters;
 
-namespace Solution.Api;
+namespace Solution.Persistence.LlmAdapter;
 
 public class GeminiAdapter : ILlMAdapter
 {
@@ -28,6 +23,6 @@ public class GeminiAdapter : ILlMAdapter
             model: "gemini-2.5-flash",
             contents: prompt);
         var response = responseObject.Candidates[0].Content.Parts[0].Text;
-        return response  is null or "" ? Errors.AiModelComunicationFailure : response; 
+        return response  is null or "" ? DomainErrors.AiModelComunicationFailure : response; 
     }
 }

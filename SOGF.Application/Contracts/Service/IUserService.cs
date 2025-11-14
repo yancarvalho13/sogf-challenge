@@ -1,6 +1,6 @@
 using SOGF.Domain.Entity;
-using SOGF.Domain.Entity.Result;
 using SOGF.Domain.Model;
+using SOGF.Shared.Result;
 using Solution.Application.Dto;
 
 namespace Solution.Application.Contracts.Service;

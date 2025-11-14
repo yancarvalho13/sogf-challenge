@@ -1,7 +1,6 @@
-using SOGF.Domain.Exception;
-using Solution.Application.Dto;
+using SOGF.Shared.Exception;
 
-namespace SOGF.Domain.Entity.Result;
+namespace SOGF.Shared.Result;
 
 public record Result
 {

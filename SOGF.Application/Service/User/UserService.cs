@@ -1,9 +1,8 @@
 using System.Security.Cryptography;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
-using Microsoft.AspNetCore.Identity;
 using SOGF.Domain;
-using SOGF.Domain.Entity.Result;
+using SOGF.Shared.Result;
 using Solution.Application.Contracts.Mapping;
 using Solution.Application.Contracts.Persistence;
 using Solution.Application.Contracts.Security;
@@ -23,9 +22,9 @@ public class UserService(
     public async Task<Result<string>> Login(UserLoginRequest request)
     {
         var user = await userRepository.FindByUsername(request.username);
-        if (user is null) return Errors.InvalidCredentials;
+        if (user is null) return DomainErrors.InvalidCredentials;
         var requestPassword = HashPassword(request.password, user.Salt);
-        if (!requestPassword.Equals(user.Password)) return Errors.InvalidCredentials;
+        if (!requestPassword.Equals(user.Password)) return DomainErrors.InvalidCredentials;
         var token = tokenProvider.GenerateToken(user);
         return token;
     }

@@ -1,13 +1,12 @@
 using FluentValidation;
 using FluentValidation.Results;
 using SOGF.Domain;
-using SOGF.Domain.Entity.Result;
 using SOGF.Domain.Model;
+using SOGF.Shared.Result;
 using Solution.Application.Contracts.Mapping;
 using Solution.Application.Contracts.Persistence;
 using Solution.Application.Contracts.Service;
-using Solution.Application.Dto;
-using Solution.Application.Mappers;
+
 
 namespace Solution.Application.Service;
 
@@ -38,7 +37,7 @@ where TEntity : BaseEntity
     public async Task<Result<TResponse?>> GetByIdAsync(long id)
     {
         var entitie = await _genericRepository.GetByIdAsync(id);
-        if (entitie is null) return Errors.RecurseNotFound;
+        if (entitie is null) return DomainErrors.RecurseNotFound;
 
         return _mapper.ToDto(entitie);
     }
@@ -61,7 +60,7 @@ where TEntity : BaseEntity
         if (validationErrors.Count != 0) return validationErrors;
 
         var entitieDb = await _genericRepository.GetByIdAsync(id);
-        if (entitieDb is null) return Errors.RecurseNotFound;
+        if (entitieDb is null) return DomainErrors.RecurseNotFound;
         
         
         var entitie = _mapper.ToEntity(request);
@@ -73,7 +72,7 @@ where TEntity : BaseEntity
     public async Task<Result<bool>> DeleteAsync(long id)
     {
         var entitie = await _genericRepository.GetByIdAsync(id);
-        if (entitie is null) return Errors.RecurseNotFound;
+        if (entitie is null) return DomainErrors.RecurseNotFound;
         await _genericRepository.DeleteAsync(entitie);
         return true;
     }

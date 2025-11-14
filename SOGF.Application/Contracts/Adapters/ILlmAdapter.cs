@@ -1,8 +1,6 @@
-using SOGF.Domain.Entity.Result;
-using Solution.Application;
-using Solution.Application.Dto;
+using SOGF.Shared.Result;
 
-namespace Solution.Api.Contracts;
+namespace Solution.Application.Contracts.Adapters;
 
 public interface ILlMAdapter
 {

@@ -1,5 +1,5 @@
-using SOGF.Domain.Entity.Result;
 using SOGF.Domain.Model;
+using SOGF.Shared.Result;
 
 namespace Solution.Application.Contracts.Service;
 

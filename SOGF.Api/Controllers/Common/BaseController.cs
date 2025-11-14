@@ -1,7 +1,7 @@
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
-using SOGF.Domain.Entity.Result;
-using SOGF.Domain.Exception;
+using SOGF.Shared.Exception;
+using SOGF.Shared.Result;
 using Solution.Application;
 using Solution.Application.Dto;
 
