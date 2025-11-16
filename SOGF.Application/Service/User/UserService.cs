@@ -33,7 +33,7 @@ public class UserService(
     {
         var isValid = await validator.ValidateAsync(request);
         var validationErrors =  ValidateRequest(isValid);
-        if (validationErrors.Count != 0) return validationErrors;
+        if (validationErrors.Count != 0) return Result<UserResponse>.ValidationFailure(validationErrors);
 
         var salt = GenerateSalt();
         
@@ -69,7 +69,7 @@ public class UserService(
 
         return Convert.ToBase64String(salt);
     }
-    private List<ValidationFailureResponse> ValidateRequest(ValidationResult validationResult)
+    private IReadOnlyCollection<ValidationFailureResponse> ValidateRequest(ValidationResult validationResult)
     {
         return validationResult.IsValid
             ? new List<ValidationFailureResponse>()

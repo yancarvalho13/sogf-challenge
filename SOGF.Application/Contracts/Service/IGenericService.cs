@@ -5,7 +5,7 @@ namespace Solution.Application.Contracts.Service;
 
 public interface IGenericService<TEntity , TRequest, TResponse> 
 {
-    Task<Result<List<TResponse>>> GetAllAsync();
+    Task<Result<IReadOnlyCollection<TResponse>>> GetAllAsync();
     Task<Result<TResponse?>> GetByIdAsync(long id);
     Task<Result<TResponse>> CreateAsync(TRequest request);
     Task<Result<TResponse>> UpdateAsync(TRequest request, long id);

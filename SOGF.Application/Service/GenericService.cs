@@ -24,7 +24,7 @@ where TEntity : BaseEntity
         _validator = validator;
     }
 
-    public async Task<Result<List<TResponse>>> GetAllAsync()
+    public async Task<Result<IReadOnlyCollection<TResponse>>> GetAllAsync()
     {
         var entities = await _genericRepository.GetAllAsync();
         if (entities.Count == 0) return new List<TResponse>();
@@ -46,7 +46,7 @@ where TEntity : BaseEntity
     {
         var isValid = await _validator.ValidateAsync(request);
         var validationErrors =  ValidateRequest(isValid);
-        if (ValidateRequest(isValid).Count != 0) return validationErrors;
+        if (ValidateRequest(isValid).Count != 0) return Result<TResponse>.ValidationFailure(validationErrors);
         
          var entitie = _mapper.ToEntity(request);
          await _genericRepository.CreateAsync(entitie);
@@ -57,7 +57,7 @@ where TEntity : BaseEntity
     {
         var isValid = await _validator.ValidateAsync(request);
         var validationErrors =  ValidateRequest(isValid);
-        if (validationErrors.Count != 0) return validationErrors;
+        if (validationErrors.Count != 0) return Result<TResponse>.ValidationFailure(validationErrors);
 
         var entitieDb = await _genericRepository.GetByIdAsync(id);
         if (entitieDb is null) return DomainErrors.RecurseNotFound;
@@ -92,7 +92,7 @@ where TEntity : BaseEntity
     }
 
 
-    private List<ValidationFailureResponse> ValidateRequest(ValidationResult validationResult)
+    private IReadOnlyCollection<ValidationFailureResponse> ValidateRequest(ValidationResult validationResult)
     {
 
         return validationResult.IsValid

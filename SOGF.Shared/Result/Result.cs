@@ -8,10 +8,10 @@ public record Result
     public Error? Error { get; }
     
     public bool? IsValidation { get; }
-    public List<ValidationFailureResponse>? ValidationFailures { get; }
+    public IReadOnlyCollection<ValidationFailureResponse>? ValidationFailures { get; }
 
 
-    protected Result(bool isSuccess,bool isValidation ,List<ValidationFailureResponse>? validationFailures)
+    protected Result(bool isSuccess,bool isValidation ,IReadOnlyCollection<ValidationFailureResponse>? validationFailures)
     {
         this.isSuccess = isSuccess;
         IsValidation = isValidation;
@@ -29,14 +29,13 @@ public record Result
     public static Result Failure(Error error) =>
         new(false, error ?? throw new ArgumentNullException(nameof(Error)));
 
-    public static Result ValidationFailure(List<ValidationFailureResponse> validationFailures) =>
+    public static Result ValidationFailure(IReadOnlyCollection<ValidationFailureResponse> validationFailures) =>
         new(false,true, validationFailures);
     
     public static implicit operator Result(Error error) => 
         Failure(error);
 
-    public static implicit operator Result(List<ValidationFailureResponse> validationFailures) =>
-        ValidationFailure(validationFailures);
+  
 };
     public record Result<T> : Result
     {
@@ -48,15 +47,17 @@ public record Result
         {
         }
 
-        private Result(List<ValidationFailureResponse> validationFailures) : base(false, true, validationFailures)
+        private Result(IReadOnlyCollection<ValidationFailureResponse> validationFailures) : base(false, true, validationFailures)
         {
         }
         
         public static implicit operator Result<T>(T value) => new(value);
 
         public static implicit operator Result<T>(Error error) => new(error);
-        
-        public static implicit operator Result<T>(List<ValidationFailureResponse> validationFailures) => new(validationFailures);
+
+        public new static Result<T> ValidationFailure(IReadOnlyCollection<ValidationFailureResponse> validationFailures)
+            => new(validationFailures);
+
 
 
     };

@@ -41,7 +41,7 @@ public class MissaoService : IMissaoService
     {
         var isValid = await _validator.ValidateAsync(request);
         var validationErrors =  ValidateRequest(isValid);
-        if (validationErrors.Count != 0) return validationErrors;
+        if (validationErrors.Count != 0) return Result<MissaoResponse>.ValidationFailure(validationErrors);
 
         var missoesDb = await _missaoRepository.GetMissoesEmAndamento();
         

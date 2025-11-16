@@ -28,7 +28,7 @@ public class BaseController : ControllerBase
         );
     }
 
-    protected IActionResult Problem(List<ValidationFailureResponse> validationFailures)
+    protected IActionResult Problem(IReadOnlyCollection<ValidationFailureResponse> validationFailures)
     {
       
 
